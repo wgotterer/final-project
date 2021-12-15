@@ -29,9 +29,9 @@ UserOnlineClass.reset_pk_sequence
 
 
 
-donald = User.create(username:"donald", name:"donald", password_digest:"donald", email:"donald@gmail.com", admin:"no")
-bugs = User.create(username:"bugs", name:"bugs", password_digest:"bugs", email:"bugs@gmail.com", admin:"no")
-mickey = User.create(username:"mickey", name:"mickey", password_digest:"mickey", email:"mickey@gmail.com", admin:"no")
+donald = User.create(username:"donald", name:"donald", password:"donald", email:"donald@gmail.com", admin:"no")
+bugs = User.create(username:"bugs", name:"bugs", password:"bugs", email:"bugs@gmail.com", admin:"no")
+mickey = User.create(username:"mickey", name:"mickey", password:"mickey", email:"mickey@gmail.com", admin:"no")
 
 game1 = TheoryGame.create(name:"major scales", difficulty:"easy")
 game2 = TheoryGame.create(name:"minor scales", difficulty:"easy")

@@ -4,11 +4,14 @@ import {Route, Routes} from 'react-router-dom';
 import NavBar from './NavBar';
 import Piano from './Piano';
 import Home from './Home';
+import Login from './Login';
 
 
 function App() {
 
   const [user, setUser] = useState()
+  const [loggedInUser, setLoggedInUser] = useState(false);
+
 
 
   useEffect(() => {
@@ -16,8 +19,9 @@ function App() {
     .then(response => {
       if (response.ok) {
         response.json()
-        .then(user => {
-          setUser(user);
+        .then(person => {
+          setUser(person);
+          setLoggedInUser(true)
         });
       }
     });
@@ -26,8 +30,10 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setUser={setUser}/>
       <Routes>
+      
+      <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />
       <Route path='/' element={<Home />}/>
       <Route path='/piano' element={<Piano />}/>
       </Routes>
