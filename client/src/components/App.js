@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import Piano from './Piano';
 import Home from './Home';
 import Login from './Login';
+import OnlineClass from './OnlineClass';
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
       <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />
       <Route path='/' element={<Home />}/>
       <Route path='/piano' element={<Piano />}/>
+      <Route path='/follow-along-classes' element={<OnlineClass user={user}/>}/>
+
       </Routes>
     </div>
    

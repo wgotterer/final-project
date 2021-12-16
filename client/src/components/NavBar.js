@@ -1,6 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
+import home_piano from "../data/home_piano.png"
+import piano_piano from "../data/piano_piano.png"
+import teacher_piano from "../data/teacher_piano.png"
+import OnlineClass from './OnlineClass';
 
  function NavBar({loggedInUser, setLoggedInUser, setUser}) {
 
@@ -19,10 +23,10 @@ import {useNavigate} from "react-router-dom";
 
     return (
         <div>
-            {loggedInUser === false ? <Link to='/login'><button>Log In</button></Link> : <> <button onClick={handleLogOut}>Logout</button> </>}
-
-            <Link to='/'>Home</Link> {' '}
-            <Link to='/piano'>Piano Game</Link> {' '}
+            <Link to='/'><img height="40px" width="40px" src={home_piano} /></Link> {' '}
+            <Link to='/piano'><img height="40px" width="40px" src={piano_piano} /></Link> {' '} 
+            <Link to='/follow-along-classes'><img height="40px" width="40px" src={teacher_piano} /></Link> {' '} 
+            <br/> {loggedInUser === false ? <Link to='/login'><button>Log In</button></Link> : <> <button onClick={handleLogOut}>Logout</button> </>}
         </div>
     )
 }

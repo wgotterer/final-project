@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 function Login({setUser, setLoggedInUser}) {
 
+    const [showSignUp, setShowSignUp] = useState(false)
     let navigate = useNavigate();
     
     const [loginFormData, setLoginFormData] = useState({
@@ -75,10 +76,16 @@ function Login({setUser, setLoggedInUser}) {
         });
     }
 
+    function handleShowSignUp(){
+        setShowSignUp(!showSignUp)
+    }
+
 
     return (
+        
         <div className='Login'>
-            <h2>Returning User? Log in Here:</h2>
+            
+            <h2> Log in:</h2>
             <form className="login_form_container" onSubmit={handleLogin}>
                 <label> Username: </label>
                 <label>
@@ -106,7 +113,11 @@ function Login({setUser, setLoggedInUser}) {
                 />
                 </label>
             </form>
-            <h2>New User? Sign Up Here:</h2>
+                    
+            <h2>Create an account:</h2>
+            <button onClick={handleShowSignUp}>{showSignUp ? "Close" : "Sign Up"}</button>
+
+            {showSignUp ? 
             <form className="sign_up_form_container" onSubmit={handleSignup}>
                 <label> Name: </label>
                 <label> 
@@ -164,6 +175,7 @@ function Login({setUser, setLoggedInUser}) {
                     type='submit'
                 />
             </form>
+            : null}
         </div>
     )
 }

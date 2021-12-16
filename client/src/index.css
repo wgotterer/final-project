@@ -47,3 +47,10 @@ code {
 .key_pressed, .key_flat_pressed {
   background-color: #00d8ff;
 }
+
+.online_grid_container{
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 20px;
+  gap: 10px;
+}
