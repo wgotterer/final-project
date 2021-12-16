@@ -6,6 +6,7 @@ import Piano from './Piano';
 import Home from './Home';
 import Login from './Login';
 import OnlineClass from './OnlineClass';
+import Purchased from './Purchased';
 
 
 function App() {
@@ -35,9 +36,10 @@ function App() {
       <Routes>
       
       <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />
-      <Route path='/' element={<Home />}/>
+      <Route path='/' element={<Home  loggedInUser={loggedInUser} user={user} />}/>
       <Route path='/piano' element={<Piano />}/>
-      <Route path='/follow-along-classes' element={<OnlineClass user={user}/>}/>
+      <Route path='/follow-along-classes' element={<OnlineClass />}/>
+      <Route path='/purchased-classes' element={<Purchased user={user} />}/>
 
       </Routes>
     </div>

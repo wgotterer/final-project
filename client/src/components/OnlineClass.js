@@ -4,12 +4,14 @@ import Popup from './Popup'
 
 
 
-function OnlineClass({user}) {
+
+function OnlineClass() {
 
     const [allOnlineClasses, setAllOnlineClasses] = useState()
     const [showPopUp, setShowPopUp] = useState(false)
     const [search, setSearch] = useState();
-    const [classToDisplay, setClassToDisplay] = useState();
+    const [classToDisplay, setClassToDisplay] = useState([{}]);
+    
 
 
 
@@ -17,7 +19,6 @@ function OnlineClass({user}) {
         fetch("/online_classes")
        .then(resp => resp.json())
        .then(onlineClasses => {
-           console.log(onlineClasses)
            setAllOnlineClasses(onlineClasses)
            setClassToDisplay(onlineClasses)
         
@@ -41,8 +42,11 @@ function OnlineClass({user}) {
         }));
         
     }
+
    
-console.log(classToDisplay)
+
+
+
 
     return allOnlineClasses ? (
         <div>
@@ -65,6 +69,7 @@ console.log(classToDisplay)
                     </label>
             </ form>
         <div className="online_grid_container">
+
            {classToDisplay ? classToDisplay.map((oneOnlineClass)  => <OnlineClassCard oneOnlineClass={oneOnlineClass}/>) : "Loading"} 
         </div>
         </div>
