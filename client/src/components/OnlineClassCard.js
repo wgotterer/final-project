@@ -15,6 +15,8 @@ function OnlineClassCard({oneOnlineClass}) {
         setFormData({...formData, [e.target.name]: [e.target.value]})
     }
 
+
+    // Could I do a post request in the handle submit that posts a new user_online_class instance?
     function handleSubmitPurchase(e){
         e.preventDefault()
     }
@@ -39,7 +41,26 @@ function OnlineClassCard({oneOnlineClass}) {
                     name='credit'
                     value={formData.credit}
                     onChange={handlePurchaseFormChange}
-                    placeholder="credit"
+                    placeholder="Credit Card Number"
+                />
+                </label>
+                <label> Full Name: </label>
+                <label>
+                <input 
+                    type='text'
+                    name='name'
+                    value={formData.name}
+                    onChange={handlePurchaseFormChange}
+                    placeholder="Full Name"
+                />
+                </label>
+                <label> Valid Through: </label>
+                <label>
+                <input 
+                    type='date'
+                    name='valid'
+                    value={formData.valid}
+                    onChange={handlePurchaseFormChange}
                 />
                 </label>
                 <label>
