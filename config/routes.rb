@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :user_online_classes
   resources :online_classes
   resources :private_classes
+  resources :user_theory_games
   resources :scales
   resources :theory_games
   resources :users

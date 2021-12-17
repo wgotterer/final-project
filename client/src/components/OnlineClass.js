@@ -5,7 +5,7 @@ import Popup from './Popup'
 
 
 
-function OnlineClass() {
+function OnlineClass({user}) {
 
     const [allOnlineClasses, setAllOnlineClasses] = useState()
     const [showPopUp, setShowPopUp] = useState(false)
@@ -70,7 +70,7 @@ function OnlineClass() {
             </ form>
         <div className="online_grid_container">
 
-           {classToDisplay ? classToDisplay.map((oneOnlineClass)  => <OnlineClassCard oneOnlineClass={oneOnlineClass}/>) : "Loading"} 
+           {classToDisplay ? classToDisplay.map((oneOnlineClass)  => <OnlineClassCard oneOnlineClass={oneOnlineClass} user={user}/>) : "Loading"} 
         </div>
         </div>
        

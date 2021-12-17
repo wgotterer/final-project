@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import YoutubeEmbed from './YoutubeEmbed'
 
-function OnlineClassCard({oneOnlineClass}) {
+function OnlineClassCard({oneOnlineClass, user}) {
 
     const [showBuyForm, setShowBuyForm] = useState(false)
     const [formData, setFormData ] = useState({
@@ -15,10 +15,31 @@ function OnlineClassCard({oneOnlineClass}) {
         setFormData({...formData, [e.target.name]: [e.target.value]})
     }
 
+    // console.log(user["online_classes"])
+    console.log(oneOnlineClass)
 
     // Could I do a post request in the handle submit that posts a new user_online_class instance?
     function handleSubmitPurchase(e){
         e.preventDefault()
+        if (user["online_classes"].some((oneClass) => oneClass.id === oneOnlineClass.id)){
+            
+            alert("You have already purchased this!")
+        }else{
+            fetch("/user_online_classes", {
+                method: "POST", 
+                headers: {
+                   "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id: user.id,
+                    online_class_id: oneOnlineClass.id
+                })
+            })
+            .then((resp)=> resp.json())
+            .then((data) => console.log(data))
+        }
+
+        
     }
 
 

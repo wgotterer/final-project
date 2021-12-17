@@ -38,7 +38,7 @@ function App() {
       <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />
       <Route path='/' element={<Home  loggedInUser={loggedInUser} user={user} />}/>
       <Route path='/piano' element={<Piano />}/>
-      <Route path='/follow-along-classes' element={<OnlineClass />}/>
+      <Route path='/follow-along-classes' element={<OnlineClass user={user} />}/>
       <Route path='/purchased-classes' element={<Purchased user={user} />}/>
 
       </Routes>
