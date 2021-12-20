@@ -8,4 +8,15 @@ class PrivateClassesController < ApplicationController
         private_class = PrivateClass.find(params[:id])
         render json: private_class
       end
+
+      def create
+        private_class = PrivateClass.create!(private_class_params)
+        render json: private_class, status: :ok
+      end
+
+      private
+
+      def private_class_params
+        params.permit(:goal, :date, :user_id)
+      end
 end

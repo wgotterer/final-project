@@ -19,7 +19,7 @@ import PopUpFun from './PopUpFun'
            <h4>Have always wanted to learn piano?</h4>
            <h5>You came to the right place! Here at Piano with William you get access to free follow along classes as well as premium follow alongs as well! And to really hone in your skill, sign up for a one on one session with the man himself, William!</h5>
            {user && loggedInUser ? <h1>Hello {user.name}!</h1> : null}
-           <PopUpFun trigger={timedPopup} setShowPopUp={setTimedPopup}/>
+           {/* <PopUpFun trigger={timedPopup} setShowPopUp={setTimedPopup}/> */}
 
         </div>
         

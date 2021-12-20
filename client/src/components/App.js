@@ -7,13 +7,14 @@ import Home from './Home';
 import Login from './Login';
 import OnlineClass from './OnlineClass';
 import Purchased from './Purchased';
+import Calendar from './Calendar';
 
 
 function App() {
 
   const [user, setUser] = useState()
   const [loggedInUser, setLoggedInUser] = useState(false);
-
+  const [error, setError] = useState()
 
 
   useEffect(() => {
@@ -24,6 +25,11 @@ function App() {
         .then(person => {
           setUser(person);
           setLoggedInUser(true)
+        });
+      }else {
+        response.json()
+        .then(oneError => {
+          setError(oneError)
         });
       }
     });
@@ -37,9 +43,10 @@ function App() {
       
       <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />
       <Route path='/' element={<Home  loggedInUser={loggedInUser} user={user} />}/>
-      <Route path='/piano' element={<Piano />}/>
-      <Route path='/follow-along-classes' element={<OnlineClass user={user} />}/>
-      <Route path='/purchased-classes' element={<Purchased user={user} />}/>
+      <Route path='/piano' element={<Piano user={user} error={error} />}/>
+      <Route path='/follow-along-classes' element={<OnlineClass error={error} user={user} />}/>
+      <Route path='/purchased-classes' element={<Purchased error={error} user={user} />}/>
+      <Route path='/calendar' element={<Calendar error={error} user={user} />}/>
 
       </Routes>
     </div>

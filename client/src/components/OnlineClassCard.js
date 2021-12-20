@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
+import EditFormClass from './EditFormClass'
 import YoutubeEmbed from './YoutubeEmbed'
 
-function OnlineClassCard({oneOnlineClass, user}) {
+
+function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDisplay}) {
 
     const [showBuyForm, setShowBuyForm] = useState(false)
+    const [showEditForm, setShowEditForm] = useState(false)
     const [formData, setFormData ] = useState({
         credit: '',
         valid: '',
@@ -15,10 +18,6 @@ function OnlineClassCard({oneOnlineClass, user}) {
         setFormData({...formData, [e.target.name]: [e.target.value]})
     }
 
-    // console.log(user["online_classes"])
-    console.log(oneOnlineClass)
-
-    // Could I do a post request in the handle submit that posts a new user_online_class instance?
     function handleSubmitPurchase(e){
         e.preventDefault()
         if (user["online_classes"].some((oneClass) => oneClass.id === oneOnlineClass.id)){
@@ -36,23 +35,75 @@ function OnlineClassCard({oneOnlineClass, user}) {
                 })
             })
             .then((resp)=> resp.json())
-            .then((data) => console.log(data))
         }
+        setFormData({
+            credit: '',
+            valid: '',
+            name: '',
+            cvc: ''
+        })  
+    }
+   
 
+    function handleShowForm(){
+        setShowBuyForm(!showBuyForm) 
+    }
+
+    
+
+    console.log(oneOnlineClass)
+
+    function handleDeleteClass(){
+        fetch(`/online_classes/${oneOnlineClass.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                available: false
+            })
+        })
+        .then((resp)=> resp.json())
+        .then((data)=> {
+            console.log(data)
+            
+            setClassToDisplay(()=>{
+                const allClasses = [...classToDisplay]
+                return allClasses.map((aClass)=> {
+                    if(aClass.id === data.id){
+                        return data
+                    }else{
+                        return aClass
+                    }
+                } ).filter(oneClass => oneClass.available === true)
+                
+            })
+        })
         
     }
 
-
-    function handleShowForm(){
-        setShowBuyForm(!showBuyForm)
+    function handleEditClass(){
+        setShowEditForm(!showEditForm)
     }
-    return oneOnlineClass ? (
+
+
+    return oneOnlineClass && user && oneOnlineClass.available === true ? (
         <div className="online_class">
             <h3>{oneOnlineClass.name}</h3>
             <h5>{oneOnlineClass.price}</h5>
             <h5>{oneOnlineClass.difficulty}</h5>
             <h4>{oneOnlineClass.description}</h4>
+           {user.admin && user.admin === "1" ? 
+           <>
+           <button onClick={handleEditClass}>{showEditForm ? "Close" : "Edit"}</button>
+         
+           {showEditForm ? <EditFormClass oneOnlineClass={oneOnlineClass} /> : null}
+           <button onClick={handleDeleteClass}>Delete Class</button>
+           </>
+           : null} 
+           
            {showBuyForm ? 
+
 
            <form onSubmit={handleSubmitPurchase}> 
                 <label> Credit Card Number: </label>
@@ -81,6 +132,15 @@ function OnlineClassCard({oneOnlineClass, user}) {
                     type='date'
                     name='valid'
                     value={formData.valid}
+                    onChange={handlePurchaseFormChange}
+                />
+                </label>
+                <label> CVC: </label>
+                <label>
+                <input 
+                    type='number'
+                    name='cvc'
+                    value={formData.cvc}
                     onChange={handlePurchaseFormChange}
                 />
                 </label>

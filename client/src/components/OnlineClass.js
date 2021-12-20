@@ -5,27 +5,33 @@ import Popup from './Popup'
 
 
 
-function OnlineClass({user}) {
+function OnlineClass({user, error}) {
 
     const [allOnlineClasses, setAllOnlineClasses] = useState()
     const [showPopUp, setShowPopUp] = useState(false)
     const [search, setSearch] = useState();
     const [classToDisplay, setClassToDisplay] = useState([{}]);
+   
     
 
 
 
     useEffect(() => {
-        fetch("/online_classes")
-       .then(resp => resp.json())
-       .then(onlineClasses => {
-           setAllOnlineClasses(onlineClasses)
-           setClassToDisplay(onlineClasses)
-        
-       })
+        if(user){
+            fetch("/online_classes")
+            .then(resp => resp.json())
+            .then(onlineClasses => {
+                setAllOnlineClasses(onlineClasses)
+                setClassToDisplay(onlineClasses)
+             
+            })
+        }
+       
     }, [])
 
-    console.log(allOnlineClasses)
+    // console.log(error)
+
+    // console.log(allOnlineClasses)
 
     function handleShowPopUp(){
         setShowPopUp(!showPopUp)
@@ -48,13 +54,13 @@ function OnlineClass({user}) {
 
 
 
-    return allOnlineClasses ? (
+    return allOnlineClasses && user ? (
         <div>
             <h3>Purchase premium follow along classes below</h3>
             <h3>Or</h3>
             <h3>Sign up for a private class here</h3>
             <button onClick={handleShowPopUp}>Sign Up</button>
-            <Popup trigger={showPopUp} setShowPopUp={setShowPopUp}/>
+            <Popup user={user} trigger={showPopUp} setShowPopUp={setShowPopUp}/>
             
             <form>
                     <label>Search: 
@@ -70,11 +76,11 @@ function OnlineClass({user}) {
             </ form>
         <div className="online_grid_container">
 
-           {classToDisplay ? classToDisplay.map((oneOnlineClass)  => <OnlineClassCard oneOnlineClass={oneOnlineClass} user={user}/>) : "Loading"} 
+           {classToDisplay ? classToDisplay.map((oneOnlineClass)  => <OnlineClassCard setClassToDisplay={setClassToDisplay} classToDisplay={classToDisplay} oneOnlineClass={oneOnlineClass} user={user}/>) : "Loading"} 
         </div>
         </div>
        
-    ) : "loading"
+    ) : error && error["error"] ? <h2>{error["error"]}</h2> : null
 
 
 }

@@ -1,4 +1,4 @@
 class OnlineClassSerializer < ActiveModel::Serializer
-  attributes :id, :name, :difficulty, :price, :description, :video
+  attributes :id, :name, :difficulty, :price, :description, :video, :available
   
 end

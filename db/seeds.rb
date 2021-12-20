@@ -28,10 +28,11 @@ UserOnlineClass.reset_pk_sequence
 
 
 
+wilhelm = User.create(username:"wilhelm", name:"wilhelm", password:"wilhelm", email:"wilhelm@gmail.com", admin:"1")
 
-donald = User.create(username:"donald", name:"donald", password:"donald", email:"donald@gmail.com", admin:"no")
-bugs = User.create(username:"bugs", name:"bugs", password:"bugs", email:"bugs@gmail.com", admin:"no")
-mickey = User.create(username:"mickey", name:"mickey", password:"mickey", email:"mickey@gmail.com", admin:"no")
+donald = User.create(username:"donald", name:"donald", password:"donald", email:"donald@gmail.com", admin:"0")
+bugs = User.create(username:"bugs", name:"bugs", password:"bugs", email:"bugs@gmail.com", admin:"0")
+mickey = User.create(username:"mickey", name:"mickey", password:"mickey", email:"mickey@gmail.com", admin:"0")
 
 game1 = TheoryGame.create(name:"major scales", difficulty:"easy")
 game2 = TheoryGame.create(name:"minor scales", difficulty:"easy")
@@ -53,9 +54,9 @@ PrivateClass.create(goal:"play", date:"2021-05-05", user_id:bugs.id)
 PrivateClass.create(goal:"learn", date:"2022-02-02", user_id:donald.id)
 PrivateClass.create(goal:"learn that song", date:"2022-02-10", user_id:donald.id)
 
-onlineClass1 = OnlineClass.create(name:"Learn Happy B Day", description:"note for note walkthrough", price:"1.99", difficulty:"easy", video:"3gbNAY" )
-onlineClass2 = OnlineClass.create(name:"blues scale", description:"how to improvise", price:"2.99", difficulty:"intermediate", video:"3gbNAY" )
-onlineClass3 = OnlineClass.create(name:"anomolie chords", description:"chord walkthrough", price:"3.99", difficulty:"advanced", video:"3gbNAY" )
+onlineClass1 = OnlineClass.create(name:"Learn Happy B Day", description:"note for note walkthrough", price:"1.99", difficulty:"easy", video:"3gbNAY", available: true )
+onlineClass2 = OnlineClass.create(name:"blues scale", description:"how to improvise", price:"2.99", difficulty:"intermediate", video:"3gbNAY", available: true )
+onlineClass3 = OnlineClass.create(name:"anomolie chords", description:"chord walkthrough", price:"3.99", difficulty:"advanced", video:"3gbNAY", available: true )
 
 UserOnlineClass.create(user_id: donald.id, online_class_id: onlineClass1.id)
 UserOnlineClass.create(user_id: donald.id, online_class_id: onlineClass2.id)
