@@ -26,7 +26,7 @@ class OnlineClassesController < ApplicationController
       private
 
       def online_class_params
-        params.permit(:available)
+        params.permit(:available, :name, :price, :difficulty, :description)
       end
 
       def authorize 

@@ -86,8 +86,9 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
         setShowEditForm(!showEditForm)
     }
 
+    // Doesnt display classes in browser on refresh but doesnt error out. I think it's something to do with not being able to read if an online class is availble.
 
-    return oneOnlineClass && user && oneOnlineClass.available === true ? (
+    return oneOnlineClass && user && oneOnlineClass.available && oneOnlineClass.available === true ? (
         <div className="online_class">
             <h3>{oneOnlineClass.name}</h3>
             <h5>{oneOnlineClass.price}</h5>
@@ -97,7 +98,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
            <>
            <button onClick={handleEditClass}>{showEditForm ? "Close" : "Edit"}</button>
          
-           {showEditForm ? <EditFormClass oneOnlineClass={oneOnlineClass} /> : null}
+           {showEditForm ? <EditFormClass setShowEditForm={setShowEditForm} oneOnlineClass={oneOnlineClass} /> : null}
            <button onClick={handleDeleteClass}>Delete Class</button>
            </>
            : null} 

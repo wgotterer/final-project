@@ -17,7 +17,6 @@ function OnlineClass({user, error}) {
 
 
     useEffect(() => {
-        if(user){
             fetch("/online_classes")
             .then(resp => resp.json())
             .then(onlineClasses => {
@@ -25,7 +24,7 @@ function OnlineClass({user, error}) {
                 setClassToDisplay(onlineClasses)
              
             })
-        }
+       
        
     }, [])
 

@@ -3,14 +3,14 @@ import PopUpFun from './PopUpFun'
 
  function Home( {user, loggedInUser}) {
 
-    const [timedPopup, setTimedPopup] = useState(false)
+    // const [timedPopup, setTimedPopup] = useState(false)
 
 
-    useEffect(() => {
-        setTimeout(() => {
-            setTimedPopup(true)
-        }, 3000);
-     }, [])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setTimedPopup(true)
+    //     }, 3000);
+    //  }, [])
 
     return (
         <div>

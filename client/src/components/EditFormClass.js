@@ -1,15 +1,36 @@
 import React, {useState} from 'react'
 
- function EditFormClass({oneOnlineClass}) {
+ function EditFormClass({oneOnlineClass, setShowEditForm}) {
 
      const [dataEditForm, setDataEditForm] = useState(oneOnlineClass)
 
      function handleChangeEdit(e){
-        setDataEditForm({...dataEditForm, [e.target.name] : [e.target.value]})
+        setDataEditForm({...dataEditForm, [e.target.name] : e.target.value})
      }
 
-     function handleSubmitEdit(){
-         console.log("submitted!!!")
+     function handleSubmitEdit(e){
+        e.preventDefault()
+         fetch(`/online_classes/${dataEditForm.id}`, {
+             method: "PATCH",
+             headers: {
+                "Content-Type": "application/json"
+             },
+             body: JSON.stringify({
+                name: dataEditForm.name,
+                price: dataEditForm.price,
+                difficulty: dataEditForm.difficulty,
+                description: dataEditForm.description
+             })
+         })
+         .then((resp)=> resp.json())
+         .then((updatedClass)=>console.log(updatedClass))
+        //  setDataEditForm({
+        //     name: " ",
+        //     price: dataEditForm.price,
+        //     difficulty: dataEditForm.difficulty,
+        //     description: dataEditForm.description
+        //  })
+         setShowEditForm(false)
      }
 
      console.log(dataEditForm)
