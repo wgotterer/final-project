@@ -12,7 +12,7 @@ import Calendar from './Calendar';
 
 function App() {
 
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(null)
   const [loggedInUser, setLoggedInUser] = useState(false);
   const [error, setError] = useState()
 
@@ -34,9 +34,9 @@ function App() {
       }
     });
   }, []);
-  
 
-  return (
+
+  return  (
     <div className="App">
       <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setUser={setUser}/>
       <Routes>
@@ -51,7 +51,7 @@ function App() {
       </Routes>
     </div>
    
-  );
+  ) 
 }
 
 export default App;
