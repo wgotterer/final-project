@@ -1,4 +1,6 @@
 class PrivateClassesController < ApplicationController
+  before_action :authorize
+  
     def index
         private_classes = PrivateClass.all
         render json: private_classes, status: :ok
@@ -15,6 +17,11 @@ class PrivateClassesController < ApplicationController
       end
 
       private
+
+
+      def authorize
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+      end
 
       def private_class_params
         params.permit(:goal, :date, :user_id)

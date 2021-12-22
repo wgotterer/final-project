@@ -36,22 +36,23 @@ function App() {
   }, []);
 
 
-  return  (
+  return (
     <div className="App">
       <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setUser={setUser}/>
       <Routes>
       
       <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />
       <Route path='/' element={<Home  loggedInUser={loggedInUser} user={user} />}/>
+      
       <Route path='/piano' element={<Piano user={user} error={error} />}/>
       <Route path='/follow-along-classes' element={<OnlineClass error={error} user={user} />}/>
       <Route path='/purchased-classes' element={<Purchased error={error} user={user} />}/>
       <Route path='/calendar' element={<Calendar error={error} user={user} />}/>
-
+    
       </Routes>
     </div>
-   
   ) 
+
 }
 
 export default App;

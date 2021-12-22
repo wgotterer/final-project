@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 function Login({setUser, setLoggedInUser}) {
 
+    const [error, setError] = useState()
     const [showSignUp, setShowSignUp] = useState(false)
     let navigate = useNavigate();
     
@@ -37,18 +38,32 @@ function Login({setUser, setLoggedInUser}) {
             },
             body: JSON.stringify(loginFormData)
         })
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data)
-            setUser(data);
-            setLoggedInUser(true);
-            setLoginFormData({
-                username: '',
-                password: ''
-            });
-            navigate("/")
-        });
-        
+        .then(resp => {
+            if (resp.ok){
+                resp.json()
+                .then(data => {
+                    console.log(data)
+                    setUser(data);
+                    setLoggedInUser(true);
+                    setLoginFormData({
+                        username: '',
+                        password: ''
+                    });
+                    navigate("/")
+                });
+            } else {
+                resp.json()
+              .then(oneError => {
+               setError(oneError)
+                });
+                setLoginFormData({
+                    username: '',
+                    password: ''
+                });
+                navigate("/login")
+                alert("Incorrect username or password")
+            }
+        }) 
     }
 
     function handleSignup(event) {
