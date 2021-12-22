@@ -1,5 +1,5 @@
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import * as Tone from "tone";
 
 
@@ -9,63 +9,87 @@ function Piano({user, error}) {
     // window.addEventListener("keydown", playNote )
     // document.querySelector(".piano").addEventListener("keydown", playNote);
     const [notePlayed, setNotePlayed] = useState()
+    const [scale, setScale] = useState([])
+    const [allScales, setAllScales] = useState()
+    const [cMajScale, setCMajScale] = useState([])
+
+    useEffect(() => {
+        fetch("/scales")
+        .then(resp => resp.json())
+        .then(allScales => setAllScales(allScales))
+    }, [])
+
+
 
 
     function playNote(event) {
         if (event.keyCode === 65) {
           playC4();
           setNotePlayed(65)
+          setScale([...scale, 65])
         }
         if (event.keyCode === 87) {
           playDb4();
           setNotePlayed(87)
+          setScale([...scale, 87])
         }
         if (event.keyCode === 83) {
           playD4();
           setNotePlayed(83)
+          setScale([...scale, 83])
         }
         if (event.keyCode === 69) {
           playEb4();
           setNotePlayed(69)
+          setScale([...scale, 69])
         }
         if (event.keyCode === 68) {
           playE4();
           setNotePlayed(68)
+          setScale([...scale, 68])
         }
         if (event.keyCode === 70) {
           playF4();
           setNotePlayed(70)
+          setScale([...scale, 70])
         }
         if (event.keyCode === 84) {
           playGb4();
           setNotePlayed(84)
+          setScale([...scale, 84])
         }
         if (event.keyCode === 71) {
           playG4();
           setNotePlayed(71)
+          setScale([...scale, 71])
         }
         if (event.keyCode === 89) {
           playAb4();
           setNotePlayed(89)
+          setScale([...scale, 89])
         }
         if (event.keyCode === 72) {
           playA4();
           setNotePlayed(72)
+          setScale([...scale, 72])
         }
         if (event.keyCode === 85) {
           playBb4();
           setNotePlayed(85)
+          setScale([...scale, 85])
         }
         if (event.keyCode === 74) {
           playB4();
           setNotePlayed(74)
+          setScale([...scale, 74])
         }
         if (event.keyCode === 75) {
           playC5();
           setNotePlayed(75)
+          setScale([...scale, 75])
         }
       }
-
+  
    function playC4() {
         const synth = new Tone.Synth().toDestination();
         synth.triggerAttackRelease("C4", "8n");
@@ -120,8 +144,26 @@ function Piano({user, error}) {
         synth.triggerAttackRelease("C5", "8n");
       }
 
-console.log(notePlayed)
+      function compareScales(arrNotes, scale){
+          if (scale.length === 8){ 
+            return arrNotes.every((note, index) => {
+                return note === scale[index]
+            })
+          }
+      }
 
+    //   console.log(allScales)
+    //   console.log(scale)
+
+    //   let arrScale = allScales[0]["notes"].split(', ')
+    //   allScales && allScales[0] ? console.log(arrScale) : null
+    //  allScales && allScales[0]  ? console.log(allScales[0]["notes"].split(', ')) : null;
+    // allScalesArr.map((strNote) => console.log(strNote))
+
+    let arrNotes =  allScales && allScales[0] ? allScales[0]["notes"].split(', ').map((note)=>  parseInt(note)) : null
+
+    console.log(arrNotes)
+    // allScales && allScales[0] ? console.log(arrNotes) : null
   return user ? (
     <div className="pianoPage" onKeyDown={playNote} tabIndex={1}>
     <h1>Piano</h1>
@@ -141,6 +183,7 @@ console.log(notePlayed)
      {notePlayed === 74 ?<div className="red-white-key" onClick={playB4}>J</div> : <div className="white-key" onClick={playB4}>J</div>}
     {notePlayed === 75 ?<div className="red-white-key" onClick={playC5}>K</div> : <div className="white-key" onClick={playC5}>K</div>}
     </div>
+    {compareScales(arrNotes, scale) ? <h2>Good Job</h2> : <h3>Play all 8 correct notes in the scale!</h3>}
   </div>
       ) : error && error["error"] ? <h2>{error["error"]}</h2> : null
 

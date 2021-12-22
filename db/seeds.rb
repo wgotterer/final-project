@@ -37,9 +37,9 @@ mickey = User.create(username:"mickey", name:"mickey", password:"mickey", email:
 game1 = TheoryGame.create(name:"major scales", difficulty:"easy")
 game2 = TheoryGame.create(name:"minor scales", difficulty:"easy")
 
-Scale.create(notes: "c,d,e,f,g,a,b", name: "C major", theory_game_id:game1.id)
-Scale.create(notes: "a,b,c,d,e,f,g", name: "A minor", theory_game_id:game2.id)
-Scale.create(notes: "d, e, f#, g, a, b, c#", name: "C major", theory_game_id:game1.id)
+Scale.create(notes: "65, 83, 68, 70, 71, 72, 74, 75", name: "C major", theory_game_id:game1.id)
+Scale.create(notes: "65, 83, 68, 70, 71, 72, 74, 75", name: "A minor", theory_game_id:game2.id)
+Scale.create(notes: "65, 83, 68, 70, 71, 72, 74, 75", name: "C major", theory_game_id:game1.id)
 
 
 
