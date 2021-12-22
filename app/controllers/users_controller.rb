@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
@@ -17,8 +19,12 @@ class UsersController < ApplicationController
     
       private
     
+      def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+      end
+
       def user_params
-        params.permit(:username, :password, :password_confirmation, :email, :birthday, )
+        params.permit(:username, :name, :password, :password_confirmation, :email )
       end
 
 end

@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
+    # validates :name, :email, :password, :confirm, :username  presence: true
+
     has_many :private_classes , dependent: :destroy
     has_many :user_theory_games, dependent: :destroy
     has_many :theory_games, through: :user_theory_games

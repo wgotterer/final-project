@@ -63,6 +63,7 @@ function Login({setUser, setLoggedInUser}) {
                 navigate("/login")
                 alert("Incorrect username or password")
             }
+            // How to use the error to display in alert instead of hardcode
         }) 
     }
 
@@ -83,8 +84,6 @@ function Login({setUser, setLoggedInUser}) {
                 name: '',
                 username: '',
                 email: '',
-                birth: '',
-                goal: '',
                 password: '',
                 confirm: ''
             })
