@@ -31,15 +31,18 @@ h1 {
   justify-content: center;
 }
 .white-key {
-  border: 1px solid #000000;
+  border: 2px solid #110c0c;
   width: 100px;
   height: 400px;
   background-color: white;
   color: red;
   text-align: center;
+  background-image: url("data/telepiano.jpeg");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
 }
 .black-key {
-  background-color: black;
+  background-color: rgb(201, 201, 64);
   width: 60px;
   height: 250px;
   margin-left: -30px;
@@ -47,6 +50,10 @@ h1 {
   z-index: 1;
   color: red;
   text-align: center;
+  background-image: url("data/sunpiano.jpeg");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+
 }
 
 .red-white-key{
@@ -55,7 +62,7 @@ h1 {
   height: 400px;
   background-color: red;
   color: red;
-  text-align: center;
+  
 }
 
 .red-black-key {
@@ -67,4 +74,5 @@ h1 {
   z-index: 1;
   color: red;
   text-align: center;
+  
 }

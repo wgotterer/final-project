@@ -38,8 +38,9 @@ game1 = TheoryGame.create(name:"major scales", difficulty:"easy")
 game2 = TheoryGame.create(name:"minor scales", difficulty:"easy")
 
 Scale.create(notes: "65, 83, 68, 70, 71, 72, 74, 75", name: "C major", theory_game_id:game1.id)
-Scale.create(notes: "65, 83, 68, 70, 71, 72, 74, 75", name: "A minor", theory_game_id:game2.id)
-Scale.create(notes: "65, 83, 68, 70, 71, 72, 74, 75", name: "C major", theory_game_id:game1.id)
+Scale.create(notes: "65, 83, 82, 70, 71, 72, 73, 75", name: "D major", theory_game_id:game1.id)
+Scale.create(notes: "65, 69, 82, 70, 72, 73, 79, 76", name: "E major", theory_game_id:game1.id)
+Scale.create(notes: "65, 83, 68, 82, 72, 74, 75, 76", name: "F major", theory_game_id:game1.id)
 
 
 
