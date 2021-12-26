@@ -17,7 +17,7 @@ import calendar from "../data/calendar.png"
         })
         .then(() => {
             setLoggedInUser(false);
-            setUser({});
+            setUser(null);
             navigate('/');
         });
     }

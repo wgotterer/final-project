@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
- function EditFormClass({oneOnlineClass, setShowEditForm}) {
+ function EditFormClass({oneOnlineClass, setShowEditForm, classToDisplay, setClassToDisplay}) {
 
      const [dataEditForm, setDataEditForm] = useState(oneOnlineClass)
 
@@ -23,15 +23,23 @@ import React, {useState} from 'react'
              })
          })
          .then((resp)=> resp.json())
-         .then((updatedClass)=>console.log(updatedClass))
-        //  setDataEditForm({
-        //     name: " ",
-        //     price: dataEditForm.price,
-        //     difficulty: dataEditForm.difficulty,
-        //     description: dataEditForm.description
-        //  })
+         .then((updatedClass)=>{
+             
+            setClassToDisplay(()=>{
+                const allClasses = [...classToDisplay]
+                return allClasses.map((oneClass)=> {
+                    if(oneClass.id === updatedClass.id){
+                        return updatedClass
+                    }else{
+                        return oneClass
+                    }
+                })
+                
+            })
+         })
          setShowEditForm(false)
      }
+    
 
      console.log(dataEditForm)
 

@@ -3,7 +3,7 @@ import PurchasedCards from './PurchasedCards'
 
  function Purchased({user, error}) {
 
-    // Doesnt work on refresh says cant read admin!!!!!!!!!!
+    // Newly purchased song isnt there. need to reset state. of User?!!!!!!!!!!
   
     return user ? (
        <div>

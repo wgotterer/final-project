@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setUser={setUser}/>
+      <NavBar loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser} setUser={setUser}/>
       <Routes>
       
       <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />

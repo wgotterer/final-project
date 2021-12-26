@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import EditFormClass from './EditFormClass'
 import YoutubeEmbed from './YoutubeEmbed'
+import {useNavigate} from "react-router-dom";
+
 
 
 function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDisplay}) {
@@ -13,6 +15,9 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
         name: '',
         cvc: ''
     })
+
+    let navigate = useNavigate();
+
 
     function handlePurchaseFormChange(e){
         setFormData({...formData, [e.target.name]: [e.target.value]})
@@ -42,6 +47,10 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
             name: '',
             cvc: ''
         })  
+        alert("Thank you for your purchase")
+        navigate("/purchased-classes")
+
+        //to reset state so the users purchased songs appear do i need to setUser state to user plus the newly purhcased online class?
     }
    
 
@@ -98,7 +107,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
            <>
            <button onClick={handleEditClass}>{showEditForm ? "Close" : "Edit"}</button>
          
-           {showEditForm ? <EditFormClass setShowEditForm={setShowEditForm} oneOnlineClass={oneOnlineClass} /> : null}
+           {showEditForm ? <EditFormClass setClassToDisplay={setClassToDisplay} classToDisplay={classToDisplay} setShowEditForm={setShowEditForm} oneOnlineClass={oneOnlineClass} /> : null}
            <button onClick={handleDeleteClass}>Delete Class</button>
            </>
            : null} 

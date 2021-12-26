@@ -3,8 +3,6 @@ import OnlineClassCard from './OnlineClassCard'
 import Popup from './Popup'
 
 
-
-
 function OnlineClass({user, error}) {
 
     const [allOnlineClasses, setAllOnlineClasses] = useState()
