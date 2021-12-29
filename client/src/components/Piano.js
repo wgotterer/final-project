@@ -42,8 +42,6 @@ import {
 
 function Piano({user, error}) {
 
-    // window.addEventListener("keydown", playNote )
-    // document.querySelector(".piano").addEventListener("keydown", playNote);
     const [notePlayed, setNotePlayed] = useState()
     const [scale, setScale] = useState([])
     const [allScales, setAllScales] = useState()
@@ -66,6 +64,7 @@ function Piano({user, error}) {
         setScale([])
         setNotePlayed()
     }
+    
 
 
   return user ? (

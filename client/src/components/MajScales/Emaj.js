@@ -99,7 +99,7 @@ import {
         <div>
               {/* E maj scale */}
     {pianoType === 2 ?  <div className="piano" onKeyDown={playEmajNote} tabIndex={1}>
-    <div><button>Start playing</button> </div>
+    <div className="start_container"><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
     <div  className="white-key"></div>
     <div className="black-key"></div>
       <div className="white-key"></div> 

@@ -113,7 +113,7 @@ console.log(scale)
 // !!!!!!!!!!! Change pianotype to 5 when create the G major scale
     return (
         <div>{pianoType === 5 ?  <div className="piano" onKeyDown={playAmajNote} tabIndex={1}>
-        <div><button>Start playing</button> </div>
+       <div><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
         <div className="white-key"> </div>
         <div className="black-key" ></div> 
         <div className="white-key"> </div>       

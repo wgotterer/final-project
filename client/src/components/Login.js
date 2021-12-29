@@ -130,8 +130,9 @@ function Login({setUser, setLoggedInUser}) {
             </form>
                     
             <h2>Create an account:</h2>
-            <button onClick={handleShowSignUp}>{showSignUp ? "Close" : "Sign Up"}</button>
-
+            <div className="button_container">
+            <button className="sign_up_button"onClick={handleShowSignUp}>{showSignUp ? "Close" : "Sign Up"}</button>
+            </div>
             {showSignUp ? 
             <form className="sign_up_form_container" onSubmit={handleSignup}>
                 <label> Name: </label>

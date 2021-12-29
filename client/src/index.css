@@ -1,6 +1,6 @@
 body {
   margin: 0;
-	background: linear-gradient(-45deg, #BFE6E7, #A3EEE3, #92F4D1, #93F8B3);
+	background: linear-gradient(-45deg, #BFE6E7, #A3EEE3, #CFE8DF, #E6F4F1);
 	background-size: 400% 400%;
 	animation: gradient 30s ease infinite;
 	height: 100vh;
@@ -113,6 +113,7 @@ line-height: 1.8;
   padding-top: 30px;
 }
 
+
 .home_grid_container h5  {
   height: 400px;
   width: 400px;
@@ -123,7 +124,74 @@ line-height: 1.8;
   justify-self: center;
 }
 
+.button_container{
+padding-top: 20px;
+padding-bottom: 20px;
+}
 
+.login_button,
+.sign_up_button {
+    background: #D9B886;
+    border: 1px solid #93F8B3;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    /* font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif; */
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 10px;
+    outline: 0;
+    padding: 8px 12px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .login_button:hover,
+  .login_button:active,
+  .sign_up_button:hover,
+  .sign_up_button:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #D9B886;
+  }
+  
+  .login_button:active
+  .sign_up_button:active {
+    opacity: .5;
+  }
+
+  input[type=submit]{
+    background: #D9B886;
+    border: 1px solid #93F8B3;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 6px 8px;
+    
+  } 
+
+  input[type=submit]:hover,
+  input[type=submit]:active{
+    background-color: initial;
+    background-position: 0 0;
+    color: #D9B886;
+  }
+  input[type=submit]:active{
+    opacity: .5;
+  }  
 
 .circles li{
     position: absolute;
@@ -132,7 +200,7 @@ line-height: 1.8;
     width: 20px;
     height: 20px;
     animation: animate 40s linear infinite;
-    bottom: 500px;
+    bottom: 400px;
     background-image: url("data/note1.png");
    background-repeat: no-repeat;
    background-size:100% 100%;
@@ -157,7 +225,7 @@ line-height: 1.8;
   width: 20px;
   height: 20px;
   animation-delay: 0s;
-  animation-duration: 18s;
+  animation-duration: 9s;
   background-image: url("data/note1.png");
   background-repeat: no-repeat;
   background-size:100% 100%;
@@ -168,7 +236,7 @@ line-height: 1.8;
   right: 40%;
   width: 60px;
   height: 60px;
-  animation-duration: 18s;
+  animation-duration: 12s;
   animation-delay: 0s;
   background-image: url("data/note1.png");
   background-repeat: no-repeat;
@@ -179,7 +247,28 @@ line-height: 1.8;
   right: 10%;
   width: 20px;
   height: 20px;
+  animation-duration: 11s;
+  animation-delay: .1s;
+  background-image: url("data/note1.png");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+} 
+.circles li:nth-child(5){
+  right: 2%;
+  width: 35px;
+  height: 35px;
   animation-delay: 0s;
+  animation-duration:11s;
+  background-image: url("data/note1.png");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+} 
+.circles li:nth-child(6){
+  right: 42%;
+  width: 25px;
+  height: 25px;
+  animation-delay: .2s;
+  animation-duration: 10s;
   background-image: url("data/note1.png");
   background-repeat: no-repeat;
   background-size:100% 100%;
@@ -190,16 +279,52 @@ line-height: 1.8;
 
 @keyframes animate {
 
-  0%{
+  /* 0%{
       transform: translateY(0) rotate(0deg);
-      opacity: 1;
+      opacity: 2;
       border-radius: 0;
-  }
+  } */
 
   100%{
       transform: translateY(-1000px) rotate(100deg);
-      opacity: 0;
-      border-radius: 50%;
+      /* opacity: 6; */
+      /* border-radius: 100%; */
   }
 
 } 
+
+.sign_up_form_container input,
+.login_form_container input{
+  border-radius: 20px;
+  box-shadow: #F9D8C8  1px 1px;
+  border-color: #F9D8C8;
+
+}
+/* .start_container{
+  margin: 0;
+  position: absolute;
+  align-items: left;
+} */
+.start_piano{
+  background: #da3f3f;
+    border: 1px solid #f8ee93;
+    border: none;
+    color: white;
+    padding: 40px ;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 60px;
+    
+}
+
+.start_piano:focus {     
+  background-color:rgb(25, 194, 33);    
+}
+
+/* .start_piano:hover{
+  background-color: initial;
+    background-position: 0 0;
+    color: #da3f3f;
+    background-color: rgb(209, 209, 62);
+} */

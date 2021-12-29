@@ -99,7 +99,7 @@ import {
         <div>
             {/* D maj scale */}
     {pianoType === 1 ?  <div className="piano" onKeyDown={playDmajNote} tabIndex={1}>
-    <div><button>Start playing</button> </div>
+    <div className="start_container"><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
     <div  className="white-key"></div>
     <div className="black-key"></div>
      {notePlayed === 65 ? <div className="red-white-key" onClick={playD4}>A</div> : <div className="white-key" onClick={playD4}>A</div> }

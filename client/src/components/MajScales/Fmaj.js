@@ -108,7 +108,7 @@ import {
     return (
         <div>
              {pianoType === 3 ?  <div className="piano" onKeyDown={playFmajNote} tabIndex={1}>
-       <div><button>Start playing</button> </div>
+             <div className="start_container"><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
        <div  className="white-key"></div>
     <div className="black-key"></div>
     <div  className="white-key"></div>

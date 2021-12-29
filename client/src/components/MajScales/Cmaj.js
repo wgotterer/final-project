@@ -93,12 +93,13 @@ import {
           })
         }
     }
-
+    
+    
 
     return (
         <div>
              {pianoType === 0 ?  <div className="piano" onKeyDown={playCmajNote} tabIndex={1}>
-       <div><button>Start playing</button> </div>
+       <div><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
      {notePlayed === 65 ? <div  className="red-white-key" onClick={playC4}>A</div> : <div  className="white-key" onClick={playC4}>A</div>} 
      {notePlayed === 87 ? <div className="red-black-key" onClick={playDb4}>W</div> : <div className="black-key" onClick={playDb4}>W</div>}
      {notePlayed === 83 ? <div className="red-white-key" onClick={playD4}>S</div> : <div className="white-key" onClick={playD4}>S</div> }

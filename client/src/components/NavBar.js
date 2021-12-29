@@ -24,13 +24,15 @@ import calendar from "../data/calendar.png"
 
     return (
         <div>
+             <h2> Piano with William</h2>
             <Link to='/'><img height="40px" width="40px" src={home_piano} /></Link> {' '}
             <Link to='/piano'><img height="40px" width="40px" src={piano_piano} /></Link> {' '} 
             <Link to='/follow-along-classes'><img height="40px" width="40px" src={teacher_piano} /></Link> {' '} 
             <Link to='/purchased-classes'><img height="40px" width="40px" src={purchased_piano} /></Link> {' '}
             <Link to='/calendar'><img height="40px" width="40px" src={calendar} /></Link> {' '}
-
-            <br/> {loggedInUser === false ? <Link to='/login'><button>Log In</button></Link> : <> <button onClick={handleLogOut}>Logout</button> </>}
+            <div className="button_container">
+            <br/> {loggedInUser === false ? <Link to='/login'><button className="login_button">Log In</button></Link> : <> <button className="login_button" onClick={handleLogOut}>Logout</button> </>}
+            </div>
         </div>
     )
 }

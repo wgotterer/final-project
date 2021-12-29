@@ -23,8 +23,9 @@ import snoopy from "../data/snoopy.png"
                     <li></li>
                     <li></li>
                     <li></li>
+                    <li></li>
+                    <li></li>
             </ul>
-           <h2> Piano with William</h2>
            <div className="home_grid_container">
            <h3>Your piano journey starts here!</h3>
            {user && loggedInUser ? <h1>Hello {user.name}!</h1> : <h1>Please sign in!</h1>}
