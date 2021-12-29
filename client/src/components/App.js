@@ -45,7 +45,7 @@ function App() {
       <Route path='/' element={<Home  loggedInUser={loggedInUser} user={user} />}/>
       
       <Route path='/piano' element={<Piano user={user} error={error} />}/>
-      <Route path='/follow-along-classes' element={<OnlineClass error={error} user={user} />}/>
+      <Route path='/follow-along-classes' element={<OnlineClass setUser={setUser} error={error} user={user} />}/>
       <Route path='/purchased-classes' element={<Purchased error={error} user={user} />}/>
       <Route path='/calendar' element={<Calendar error={error} user={user} />}/>
     

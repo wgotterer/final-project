@@ -3,6 +3,22 @@ import * as Tone from "tone";
   
 
 
+  export function playF3() {
+    const synth = new Tone.Synth().toDestination();
+    synth.triggerAttackRelease("F3", "8n");
+  }
+  export function playGb3() {
+    const synth = new Tone.Synth().toDestination();
+    synth.triggerAttackRelease("Gb3", "8n");
+  }
+  export function playG3() {
+    const synth = new Tone.Synth().toDestination();
+    synth.triggerAttackRelease("G3", "8n");
+  }
+  export function playAb3() {
+    const synth = new Tone.Synth().toDestination();
+    synth.triggerAttackRelease("Ab3", "8n");
+  }
 export function playA3() {
     const synth = new Tone.Synth().toDestination();
     synth.triggerAttackRelease("A3", "8n");

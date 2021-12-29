@@ -5,7 +5,14 @@ import Cmaj from "./MajScales/Cmaj.js";
 import Dmaj from "./MajScales/Dmaj.js";
 import Emaj from "./MajScales/Emaj.js";
 import Fmaj from "./MajScales/Fmaj.js";
+import Amaj from "./MajScales/Amaj.js";
+import Gmaj from "./MajScales/Gmaj.js";
+import Bmaj from "./MajScales/Bmaj.js";
 import {
+    playF3,
+    playGb3,
+    playG3,
+    playAb3,
     playA3, 
     playBb3,
     playB3,
@@ -73,6 +80,13 @@ function Piano({user, error}) {
     <Emaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
     <Fmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Gmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Amaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Bmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
 
   </div>
       ) : error && error["error"] ? <h2>{error["error"]}</h2> : null

@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import './Popup.css'
+import {useNavigate} from "react-router-dom";
+
 
  function Popup(props) {
-    
+
+    let navigate = useNavigate();
     const [newPrivateClass, setNewPrivateClass] = useState()
     const [classFormData, setClassFormData] = useState({
         credit: '',
@@ -35,7 +38,12 @@ import './Popup.css'
             })
         })
         .then(resp => resp.json())
-        .then((newPrivateClass) => setNewPrivateClass(newPrivateClass))
+        .then((newPrivateClass) => {
+            setNewPrivateClass(newPrivateClass)
+            // SOMETHING LIKE THIS TO RESET STATE AND REFRESH TO HAVE THE NEW CLASS SHOW UP?
+            props.setUser(props.user, [props.user["online_classes"], newPrivateClass] )
+
+        })
 
         setClassFormData({
             credit: '',
@@ -45,8 +53,12 @@ import './Popup.css'
             date: '',
             goal: ''
         })
+        props.setUser(props.user, [props.user["online_classes"]] )
+        navigate("/calendar")
+
     }
     console.log(newPrivateClass)
+    console.log(props.user, props.user["online_classes"])
 
 
     return (props.trigger) ? (

@@ -3,7 +3,7 @@ import OnlineClassCard from './OnlineClassCard'
 import Popup from './Popup'
 
 
-function OnlineClass({user, error}) {
+function OnlineClass({user, error, setUser}) {
 
     const [allOnlineClasses, setAllOnlineClasses] = useState()
     const [showPopUp, setShowPopUp] = useState(false)
@@ -57,7 +57,7 @@ function OnlineClass({user, error}) {
             <h3>Or</h3>
             <h3>Sign up for a private class here</h3>
             <button onClick={handleShowPopUp}>Sign Up</button>
-            <Popup user={user} trigger={showPopUp} setShowPopUp={setShowPopUp}/>
+            <Popup user={user} setUser={setUser} trigger={showPopUp} setShowPopUp={setShowPopUp}/>
             
             <form>
                     <label>Search: 
