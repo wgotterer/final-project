@@ -11,7 +11,7 @@ function CalendarCard({privateClass}) {
     
 
     return  (
-        <div>
+        <div className="calendar_item" >
             <h2>{d}</h2>
             <h2>Goals: {privateClass.goal}</h2>
         </div>

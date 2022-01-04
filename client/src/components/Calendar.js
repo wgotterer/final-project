@@ -30,11 +30,14 @@ import CalendarAdminCard from './CalendarAdminCard'
             return <div>"Loading"</div>
         }
     return  (user && user["private_classes"]) ? (
-        <div>
-            <h1>Upcoming Classes</h1>
+        <>
+        <h1>Upcoming Classes</h1>
+        <div className="calendar_grid_container">
+            
        {(user.admin !== "1") ? user["private_classes"].map((privateClass) => <CalendarCard privateClass={privateClass} key={privateClass.id}/> ) : 
        privateClasses.map((oneClass)=> <CalendarAdminCard oneClass={oneClass}/> )  }
         </div>
+        </>
     ) : error && error["error"] ? <h2>{error["error"]}</h2> : null
 }
 

@@ -6,7 +6,7 @@ import React from 'react'
     let d = new Date(oneClass.date).toLocaleString('en-US');
 
     return (
-        <div>
+        <div className="calendar_item">
             <h2>{d}</h2>
             <h1>{oneClass.user["name"]}</h1>
             <h1>{oneClass.user["email"]}</h1>

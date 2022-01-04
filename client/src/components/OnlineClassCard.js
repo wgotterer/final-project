@@ -109,9 +109,11 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
     return oneOnlineClass && user && oneOnlineClass.available && oneOnlineClass.available === true ? (
         <div className="online_class">
             <h3>{oneOnlineClass.name}</h3>
+           <img width="200px" heigh="200px" src={oneOnlineClass.image} />
             <h5>{oneOnlineClass.price}</h5>
             <h5>{oneOnlineClass.difficulty}</h5>
             <h4>{oneOnlineClass.description}</h4>
+
            {user.admin && user.admin === "1" ? 
            <>
            <button className="edit_button" onClick={handleEditClass}>{showEditForm ? "Close" : "Edit"}</button>
