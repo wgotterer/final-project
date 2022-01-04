@@ -27,7 +27,7 @@ import CalendarAdminCard from './CalendarAdminCard'
     //     </div>
     // ) : user["private_classes"] ? user["private_classes"].map((privateClass) => <CalendarCard privateClass={privateClass} key={privateClass.id}/> ) 
         if(!user || !privateClasses){
-            return <div>"Loading"</div>
+            return <h2>Page Not Available</h2> 
         }
     return  (user && user["private_classes"]) ? (
         <>

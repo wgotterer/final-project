@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from "react";
 import * as Tone from "tone";
-import StartScale from "./MajScales/StartScale.js";
+import StartScale from "./StartScale.js";
 import Cmaj from "./MajScales/Cmaj.js";
 import Dmaj from "./MajScales/Dmaj.js";
 import Emaj from "./MajScales/Emaj.js";
@@ -9,6 +9,13 @@ import Fmaj from "./MajScales/Fmaj.js";
 import Amaj from "./MajScales/Amaj.js";
 import Gmaj from "./MajScales/Gmaj.js";
 import Bmaj from "./MajScales/Bmaj.js";
+import Cmin from "./MinScales/Cmin.js";
+import Dmin from "./MinScales/Dmin.js";
+import Emin from "./MinScales/Emin.js";
+import Fmin from "./MinScales/Fmin.js";
+import Gmin from "./MinScales/Gmin.js";
+import Amin from "./MinScales/Amin.js";
+import Bmin from "./MinScales/Bmin.js";
 import tinkywinky from "../data/tinky-winky.png"
 import piano_piano from "../data/piano_piano.png"
 import {
@@ -50,6 +57,8 @@ function Piano({user, error}) {
     const [allScales, setAllScales] = useState()
     const [pianoType, setPianoType] = useState(-1)
     const [telePiano, setTelePiano] = useState(false)
+    const [majScale, setMajScale] = useState(false)
+    const [minScale, setMinScale] = useState(false)
 
     useEffect(() => {
         fetch("/scales")
@@ -63,6 +72,23 @@ function Piano({user, error}) {
         setNotePlayed()
         
     }
+
+    function handleMajScale(){
+      setMajScale(!majScale)
+      handleNewScale()
+    }
+
+    function handleMinScale(){
+      setMinScale(!minScale)
+      handleNewScale()
+    }
+
+  //   function handleNewMinScale(){
+  //     setPianoType(pianoType + 1)
+  //     setScale([])
+  //     setNotePlayed()
+      
+  // }
 
     function handleRestart(){
         setScale([])
@@ -79,9 +105,12 @@ console.log(pianoType)
 
      <div className="pianoPage">
     <h3>Practice your scales by playing the correct notes on your keyboard</h3>
-    {telePiano ? <img onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
     
-    <StartScale handleNewScale={handleNewScale} pianoType={pianoType} setPianoType={setPianoType}/>
+    <StartScale handleMajScale={handleMajScale} handleMinScale={handleMinScale} handleNewScale={handleNewScale} pianoType={pianoType} setPianoType={setPianoType}/>
+
+    {majScale ?
+    <>
+        {telePiano ? <img className="tele-button" onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img className="tele-button" onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
 
     <Cmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
@@ -96,7 +125,29 @@ console.log(pianoType)
     <Amaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
     <Bmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
+    </>
+    : null}
 
+
+{minScale ?
+    <>
+        {telePiano ? <img onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
+
+    <Cmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Dmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Emin  telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Fmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Gmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Amin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Bmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
+    </>
+    : null}
 
   </div>
       ) : error && error["error"] ? <h2>{error["error"]}</h2> : null

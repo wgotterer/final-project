@@ -51,6 +51,7 @@ code {
   border-style: solid;
 }
 
+
 .pianoPage {
   align-items: center;
 }
@@ -176,7 +177,8 @@ padding-bottom: 20px;
 .edit_button,
 .delete_button,
 .buy_button,
-.close_button {
+.close_button, 
+.start_scale_button {
     background: #D9B886;
     border: 1px solid #93F8B3;
     border-radius: 6px;
@@ -194,7 +196,9 @@ padding-bottom: 20px;
     padding: 8px 12px;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
   }
+
   
   .login_button:hover,
   .login_button:active,
@@ -208,6 +212,10 @@ padding-bottom: 20px;
   .login_button:active
   .sign_up_button:active {
     opacity: .5;
+  }
+
+  .tele-button{
+    cursor: pointer;
   }
 
   input[type=submit]{
@@ -359,6 +367,7 @@ padding-bottom: 20px;
   position: absolute;
   align-items: left;
 } */
+
 .start_piano{
   background: #da3f3f;
     border: 1px solid #f8ee93;
@@ -383,6 +392,7 @@ padding-bottom: 20px;
 .delete_button_container{
   padding-top: 10px;
   padding-bottom: 10px;
+  
 }
 
 /* .start_piano:hover{

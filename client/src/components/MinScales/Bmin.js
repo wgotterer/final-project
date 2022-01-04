@@ -30,11 +30,11 @@ import {
     playGb5
   } from "../Tones.js";
 
-  function Bmaj({ telePiano, handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType, setPianoType}) {
+  function Bmin({ telePiano, handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType, setPianoType}) {
 
     let navigate = useNavigate();
 
-    function playBmajNote(event) {
+    function playBminNote(event) {
         
       
         if (event.keyCode === 65 && scale.length <= 7) {
@@ -103,16 +103,16 @@ import {
             setScale([...scale, 75])
         }
       }
-      let arrNotesBmaj =  allScales && allScales[6] ? allScales[6]["notes"].split(', ').map((note)=>  parseInt(note)) : null
+      let arrNotesBmin =  allScales && allScales[13] ? allScales[13]["notes"].split(', ').map((note)=>  parseInt(note)) : null
 
-      function compareBmajScales(arrNotesBmaj, scale){
+      function compareBminScales(arrNotesBmin, scale){
         if (scale.length === 8){ 
-          return arrNotesBmaj.every((note, index) => {
+          return arrNotesBmin.every((note, index) => {
               return note === scale[index]
           })
         }
     }
-console.log(arrNotesBmaj)
+console.log(arrNotesBmin)
 console.log(scale)
 
 function handleNewGame(){
@@ -122,10 +122,10 @@ function handleNewGame(){
 // !!!!!!!!!!! Change pianotype to 5 when create the G major scale
     return (
         <div>
-            {compareBmajScales(arrNotesBmaj, scale) && pianoType === 6  ? <><h2>You know your major scales! Congrats!</h2><button className="new_scale_button" onClick={handleNewGame}>Take it from the top!</button></> : pianoType === 6 ? <h3>Play all 8 correct notes in the B major scale!</h3>: null}
-        {scale.length === 8 & !compareBmajScales(arrNotesBmaj, scale) && pianoType === 6  ? <><h3>Good Try! Don't Worry!</h3><button className="new_scale_button" onClick={handleRestart}>Try Again</button></>: null}
+            {compareBminScales(arrNotesBmin, scale) && pianoType === 6  ? <><h2>You know your major scales! Congrats!</h2><button className="new_scale_button" onClick={handleNewGame}>Take it from the top!</button></> : pianoType === 6 ? <h3>Play all 8 correct notes in the B minor scale!</h3>: null}
+        {scale.length === 8 & !compareBminScales(arrNotesBmin, scale) && pianoType === 6  ? <><h3>Good Try! Don't Worry!</h3><button className="new_scale_button" onClick={handleRestart}>Try Again</button></>: null}
 
-            {pianoType === 6 ?  <div className="piano" onKeyDown={playBmajNote} tabIndex={1}>
+            {pianoType === 6 ?  <div className="piano" onKeyDown={playBminNote} tabIndex={1}>
             <div><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
         {telePiano ? <div className="white-key-tele"></div>  : <div className="white-key"></div>}
         {telePiano ? <div className="black-key-tele"></div>  : <div className="black-key"></div>}
@@ -154,4 +154,4 @@ function handleNewGame(){
     )
 }
 
-export default Bmaj 
+export default Bmin 
