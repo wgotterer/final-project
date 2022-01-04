@@ -45,7 +45,7 @@ import React, {useState} from 'react'
 
     return oneOnlineClass && dataEditForm ? (
         <div>
-              <form onSubmit={handleSubmitEdit}> 
+              <form className="form_edit" onSubmit={handleSubmitEdit}> 
                 <label> Name: </label>
                 <label>
                 <input 

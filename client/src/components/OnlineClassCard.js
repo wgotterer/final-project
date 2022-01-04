@@ -5,9 +5,10 @@ import {useNavigate} from "react-router-dom";
 
 
 
-function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDisplay}) {
+function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClassToDisplay}) {
 
     const [showBuyForm, setShowBuyForm] = useState(false)
+    const [newOnlineClass, setNewOnlineClass] = useState()
     const [showEditForm, setShowEditForm] = useState(false)
     const [formData, setFormData ] = useState({
         credit: '',
@@ -40,6 +41,12 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
                 })
             })
             .then((resp)=> resp.json())
+            .then((newOnlineClass) => {
+                setNewOnlineClass(newOnlineClass["online_class"])
+                setUser((userData) => ({...userData, online_classes: [...userData["online_classes"], newOnlineClass["online_class"]]}))
+
+               
+            })
         }
         setFormData({
             credit: '',
@@ -48,6 +55,8 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
             cvc: ''
         })  
         alert("Thank you for your purchase")
+        // props.setUser((userData)=> ({...userData, private_classes: [...userData["private_classes"], newPrivateClass]}))
+
         navigate("/purchased-classes")
 
         //to reset state so the users purchased songs appear do i need to setUser state to user plus the newly purhcased online class?
@@ -59,8 +68,8 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
     }
 
     
-
-    console.log(oneOnlineClass)
+    console.log(user)
+    console.log(classToDisplay)
 
     function handleDeleteClass(){
         fetch(`/online_classes/${oneOnlineClass.id}`, {
@@ -105,17 +114,19 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
             <h4>{oneOnlineClass.description}</h4>
            {user.admin && user.admin === "1" ? 
            <>
-           <button onClick={handleEditClass}>{showEditForm ? "Close" : "Edit"}</button>
-         
+           <button className="edit_button" onClick={handleEditClass}>{showEditForm ? "Close" : "Edit"}</button>
+            
            {showEditForm ? <EditFormClass setClassToDisplay={setClassToDisplay} classToDisplay={classToDisplay} setShowEditForm={setShowEditForm} oneOnlineClass={oneOnlineClass} /> : null}
-           <button onClick={handleDeleteClass}>Delete Class</button>
+           <div className="delete_button_container">
+           <button className="delete_button" onClick={handleDeleteClass}>Delete Class</button>
+           </div>
            </>
            : null} 
            
            {showBuyForm ? 
 
 
-           <form onSubmit={handleSubmitPurchase}> 
+           <form className="buy_form" onSubmit={handleSubmitPurchase}> 
                 <label> Credit Card Number: </label>
                 <label>
                 <input 
@@ -161,8 +172,10 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setClassToDispla
                 </label>
            </form> :
 
-           <YoutubeEmbed embedId={oneOnlineClass.video} /> }
-           <button onClick={handleShowForm}> {showBuyForm ? "Close" : "BUY"}</button> 
+        //    <YoutubeEmbed embedId={oneOnlineClass.video} /> }
+        null }
+
+           <button className="buy_button" onClick={handleShowForm}> {showBuyForm ? "Close" : "BUY"}</button> 
             
         </div>
     ) : null

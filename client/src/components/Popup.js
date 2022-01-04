@@ -41,7 +41,8 @@ import {useNavigate} from "react-router-dom";
         .then((newPrivateClass) => {
             setNewPrivateClass(newPrivateClass)
             // SOMETHING LIKE THIS TO RESET STATE AND REFRESH TO HAVE THE NEW CLASS SHOW UP?
-            props.setUser(props.user, [props.user["online_classes"], newPrivateClass] )
+            // props.setUser(props.user, [props.user["online_classes"], newPrivateClass] )
+            props.setUser((userData)=> ({...userData, private_classes: [...userData["private_classes"], newPrivateClass]}))
 
         })
 
@@ -53,12 +54,13 @@ import {useNavigate} from "react-router-dom";
             date: '',
             goal: ''
         })
-        props.setUser(props.user, [props.user["online_classes"]] )
+        // props.setUser(props.user, [props.user["online_classes"]] )
         navigate("/calendar")
 
     }
     console.log(newPrivateClass)
     console.log(props.user, props.user["online_classes"])
+    console.log(props.user)
 
 
     return (props.trigger) ? (

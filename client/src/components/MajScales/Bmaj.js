@@ -30,7 +30,7 @@ import {
     playGb5
   } from "../Tones.js";
 
-  function Bmaj({handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType, setPianoType}) {
+  function Bmaj({ telePiano, handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType, setPianoType}) {
 
     let navigate = useNavigate();
 
@@ -116,39 +116,40 @@ console.log(arrNotesBmaj)
 console.log(scale)
 
 function handleNewGame(){
-    
-
+   setPianoType(-1)
 }
 
 // !!!!!!!!!!! Change pianotype to 5 when create the G major scale
     return (
-        <div>{pianoType === 1 ?  <div className="piano" onKeyDown={playBmajNote} tabIndex={1}>
-        <div><button>Start playing</button> </div>
-        <div className="white-key"> </div>
-        <div className="black-key" ></div> 
-        <div className="white-key"> </div>       
-        <div className="black-key" ></div> 
-        <div className="white-key"> </div>       
-        <div className="black-key" ></div> 
-        {notePlayed === 65 ?<div className="red-white-key" onClick={playB3}>A</div> : <div className="white-key" onClick={playB4}>A</div>}
-        {notePlayed === 83 ? <div  className="red-white-key" onClick={playC4}>S</div> : <div  className="white-key" onClick={playC4}>S</div>} 
-        {notePlayed === 69 ? <div className="red-black-key" onClick={playDb4}>E</div> : <div className="black-key" onClick={playDb4}>E</div>}
-        {notePlayed === 68 ? <div className="red-white-key" onClick={playD4}>D</div> : <div className="white-key" onClick={playD4}>D</div> }
-        {notePlayed === 82 ? <div className="red-black-key" onClick={playEb4}>R</div> :<div className="black-key" onClick={playEb4}>R</div>}
-        {notePlayed === 70 ? <div className="red-white-key" onClick={playE4}>F</div> :  <div className="white-key" onClick={playE4}>F</div> }
-        {notePlayed === 71 ? <div className="red-white-key" onClick={playF4}>G</div> : <div className="white-key" onClick={playF4}>G</div>}
-        {notePlayed === 89 ? <div className="red-black-key" onClick={playGb4}>Y</div> : <div className="black-key" onClick={playGb4}>Y</div> }
-        {notePlayed === 72 ? <div className="red-white-key" onClick={playG4}>H</div> : <div className="white-key" onClick={playA4}>H</div>}
-        {notePlayed === 85 ? <div className="red-black-key" onClick={playAb4}>U</div> : <div className="black-key" onClick={playAb4}>U</div>}
-        {notePlayed === 74 ? <div className="red-white-key" onClick={playA4}>J</div> : <div className="white-key" onClick={playA4}>J</div>}
-        {notePlayed === 73 ? <div className="red-black-key" onClick={playAb4}>I</div> : <div className="black-key" onClick={playAb4}>I</div>}
-        {notePlayed === 75 ? <div className="red-white-key" onClick={playA4}>K</div> : <div className="white-key" onClick={playA4}>K</div>}
-        <div className="white-key"> </div>   
+        <div>
+            {compareBmajScales(arrNotesBmaj, scale) && pianoType === 1  ? <><h2>You know your major scales! Congrats!</h2><button className="new_scale_button" onClick={handleNewGame}>Take it from the top!</button></> : pianoType === 1 ? <h3>Play all 8 correct notes in the B major scale!</h3>: null}
+        {scale.length === 8 & !compareBmajScales(arrNotesBmaj, scale) && pianoType === 6  ? <><h3>Good Try! Don't Worry!</h3><button className="new_scale_button" onClick={handleRestart}>Try Again</button></>: null}
+
+            {pianoType === 1 ?  <div className="piano" onKeyDown={playBmajNote} tabIndex={1}>
+            <div><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
+        {telePiano ? <div className="white-key-tele"></div>  : <div className="white-key"></div>}
+        {telePiano ? <div className="black-key-tele"></div>  : <div className="black-key"></div>}
+        {telePiano ? <div className="white-key-tele"></div>  : <div className="white-key"></div>}
+        {telePiano ? <div className="black-key-tele"></div>  : <div className="black-key"></div>}
+        {telePiano ? <div className="white-key-tele"></div>  : <div className="white-key"></div>}
+        {telePiano ? <div className="black-key-tele"></div>  : <div className="black-key"></div>}
+        {notePlayed === 65 ?<div className="red-white-key" onClick={playB3}>A</div> : telePiano ? <div className="white-key-tele" onClick={playB4}>A</div> : <div className="white-key" onClick={playB4}>A</div>  }
+        {notePlayed === 83 ? <div  className="red-white-key" onClick={playC4}>S</div> : telePiano ? <div  className="white-key-tele" onClick={playC4}>S</div> : <div  className="white-key" onClick={playC4}>S</div> } 
+        {notePlayed === 69 ? <div className="red-black-key" onClick={playDb4}>E</div> : telePiano ? <div className="black-key-tele" onClick={playDb4}>E</div> : <div className="black-key" onClick={playDb4}>E</div>  }
+        {notePlayed === 68 ? <div className="red-white-key" onClick={playD4}>D</div> : telePiano ? <div className="white-key-tele" onClick={playD4}>D</div> : <div className="white-key" onClick={playD4}>D</div> }
+        {notePlayed === 82 ? <div className="red-black-key" onClick={playEb4}>R</div> : telePiano ? <div className="black-key-tele" onClick={playEb4}>R</div> : <div className="black-key" onClick={playEb4}>R</div> }
+        {notePlayed === 70 ? <div className="red-white-key" onClick={playE4}>F</div> : telePiano ?  <div className="white-key-tele" onClick={playE4}>F</div> : <div className="white-key" onClick={playE4}>F</div> }
+        {notePlayed === 71 ? <div className="red-white-key" onClick={playF4}>G</div> : telePiano ? <div className="white-key-tele" onClick={playF4}>G</div> : <div className="white-key" onClick={playF4}>G</div>  }
+        {notePlayed === 89 ? <div className="red-black-key" onClick={playGb4}>Y</div> : telePiano ? <div className="black-key-tele" onClick={playGb4}>Y</div> : <div className="black-key" onClick={playGb4}>Y</div>}
+        {notePlayed === 72 ? <div className="red-white-key" onClick={playG4}>H</div> : telePiano ? <div className="white-key-tele" onClick={playA4}>H</div> : <div className="white-key" onClick={playA4}>H</div>  }
+        {notePlayed === 85 ? <div className="red-black-key" onClick={playAb4}>U</div> : telePiano ? <div className="black-key-tele" onClick={playAb4}>U</div> : <div className="black-key" onClick={playAb4}>U</div>  }
+        {notePlayed === 74 ? <div className="red-white-key" onClick={playA4}>J</div> : telePiano ? <div className="white-key-tele" onClick={playA4}>J</div> : <div className="white-key" onClick={playA4}>J</div>  }
+        {notePlayed === 73 ? <div className="red-black-key" onClick={playAb4}>I</div> : telePiano ? <div className="black-key-tele" onClick={playAb4}>I</div> : <div className="black-key" onClick={playAb4}>I</div> }
+        {notePlayed === 75 ? <div className="red-white-key" onClick={playA4}>K</div> : telePiano ? <div className="white-key-tele" onClick={playA4}>K</div> : <div className="white-key" onClick={playA4}>K</div>  }
+        {telePiano ? <div className="white-key-tele"></div>  : <div className="white-key"></div>} 
         
         </div> : null}
-        {compareBmajScales(arrNotesBmaj, scale) && pianoType === 1  ? <><h2>You know your major scales! Congrats!</h2><button onClick={handleNewGame}>Take it from the top!</button></> : pianoType === 1 ? <h3>Play all 8 correct notes in the B major scale!</h3>: null}
-        {scale.length === 8 & !compareBmajScales(arrNotesBmaj, scale) && pianoType === 1  ? <><h3>Good Try! Don't Worry!</h3><button onClick={handleRestart}>Try Again</button></>: null}
-
+        
         </div>
     )
 }

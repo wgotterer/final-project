@@ -15,7 +15,7 @@ import {
     playC5,
   } from "../Tones.js";
 
- function Cmaj({handleNewScale, handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType, setPianoType}) {
+ function Cmaj({telePiano, handleNewScale, handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType, setPianoType}) {
 
     function playCmajNote(event) {
         if (event.keyCode === 65 && scale.length <= 7) {
@@ -98,25 +98,26 @@ import {
 
     return (
         <div>
+          {compareCmajScales(arrNotesCmaj, scale) && pianoType === 0  ? <><h2>Good Job</h2><button className="new_scale_button"  onClick={handleNewScale}>Click for a new Scale</button></> : pianoType === 0 ? <h3>Play all 8 correct notes in the C major scale!</h3>: null}
+    {scale.length === 8 & !compareCmajScales(arrNotesCmaj, scale) && pianoType === 0  ? <><h3>Good Try! Don't Worry!</h3><button className="new_scale_button" onClick={handleRestart}>Try Again</button></>: null}
+
              {pianoType === 0 ?  <div className="piano" onKeyDown={playCmajNote} tabIndex={1}>
        <div><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
-     {notePlayed === 65 ? <div  className="red-white-key" onClick={playC4}>A</div> : <div  className="white-key" onClick={playC4}>A</div>} 
-     {notePlayed === 87 ? <div className="red-black-key" onClick={playDb4}>W</div> : <div className="black-key" onClick={playDb4}>W</div>}
-     {notePlayed === 83 ? <div className="red-white-key" onClick={playD4}>S</div> : <div className="white-key" onClick={playD4}>S</div> }
-     {notePlayed === 69 ? <div className="red-black-key" onClick={playEb4}>E</div> :<div className="black-key" onClick={playEb4}>E</div>}
-     {notePlayed === 68 ? <div className="red-white-key" onClick={playE4}>D</div> :  <div className="white-key" onClick={playE4}>D</div> }
-     {notePlayed === 70 ?<div className="red-white-key" onClick={playF4}>F</div> : <div className="white-key" onClick={playF4}>F</div>}
-     {notePlayed === 84 ? <div className="red-black-key" onClick={playGb4}>T</div> : <div className="black-key" onClick={playGb4}>T</div> }
-     {notePlayed === 71 ? <div className="red-white-key" onClick={playG4}>G</div> : <div className="white-key" onClick={playG4}>G</div>}
-     {notePlayed === 89 ?<div className="red-black-key" onClick={playAb4}>Y</div> : <div className="black-key" onClick={playAb4}>Y</div>}
-     {notePlayed === 72 ?<div className="red-white-key" onClick={playA4}>H</div> : <div className="white-key" onClick={playA4}>H</div>}
-     {notePlayed === 85 ? <div className="red-black-key" onClick={playBb4}>U</div> : <div className="black-key" onClick={playBb4}>U</div>}
-     {notePlayed === 74 ?<div className="red-white-key" onClick={playB4}>J</div> : <div className="white-key" onClick={playB4}>J</div>}
-    {notePlayed === 75 ?<div className="red-white-key" onClick={playC5}>K</div> : <div className="white-key" onClick={playC5}>K</div>}
+     {notePlayed === 65 ?  <div className="red-white-key" onClick={playC4}>A</div> : telePiano ? <div  className="white-key-tele" onClick={playC4}>A</div> : <div  className="white-key" onClick={playC4}>A</div> } 
+     {notePlayed === 87 ? <div className="red-black-key" onClick={playDb4}>W</div> : telePiano ? <div className="black-key-tele" onClick={playDb4}>W</div> : <div className="black-key" onClick={playDb4}>W</div>}
+     {notePlayed === 83 ? <div className="red-white-key" onClick={playD4}>S</div> : telePiano ? <div className="white-key-tele" onClick={playD4}>S</div> : <div className="white-key" onClick={playD4}>S</div>  }
+     {notePlayed === 69 ? <div className="red-black-key" onClick={playEb4}>E</div> :telePiano ? <div className="black-key-tele" onClick={playEb4}>E</div>: <div className="black-key" onClick={playEb4}>E</div>}
+     {notePlayed === 68 ? <div className="red-white-key" onClick={playE4}>D</div> :  telePiano ? <div className="white-key-tele" onClick={playE4}>D</div> : <div className="white-key" onClick={playE4}>D</div>}
+     {notePlayed === 70 ?<div className="red-white-key" onClick={playF4}>F</div> : telePiano ? <div className="white-key-tele" onClick={playF4}>F</div> : <div className="white-key" onClick={playF4}>F</div>}
+     {notePlayed === 84 ? <div className="red-black-key" onClick={playGb4}>T</div> : telePiano ? <div className="black-key-tele" onClick={playGb4}>T</div> : <div className="black-key" onClick={playGb4}>T</div> }
+     {notePlayed === 71 ? <div className="red-white-key" onClick={playG4}>G</div> : telePiano ? <div className="white-key-tele" onClick={playG4}>G</div> : <div className="white-key" onClick={playG4}>G</div>}
+     {notePlayed === 89 ?<div className="red-black-key" onClick={playAb4}>Y</div> : telePiano ? <div className="black-key-tele" onClick={playAb4}>Y</div>: <div className="black-key" onClick={playAb4}>Y</div>}
+     {notePlayed === 72 ?<div className="red-white-key" onClick={playA4}>H</div> : telePiano ? <div className="white-key-tele" onClick={playA4}>H</div>: <div className="white-key" onClick={playA4}>H</div>}
+     {notePlayed === 85 ? <div className="red-black-key" onClick={playBb4}>U</div> : telePiano ? <div className="black-key-tele" onClick={playBb4}>U</div>: <div className="black-key" onClick={playBb4}>U</div>}
+     {notePlayed === 74 ?<div className="red-white-key" onClick={playB4}>J</div> : telePiano ? <div className="white-key-tele" onClick={playB4}>J</div> : <div className="white-key" onClick={playB4}>J</div>}
+    {notePlayed === 75 ?<div className="red-white-key" onClick={playC5}>K</div> : telePiano ? <div className="white-key-tele" onClick={playC5}>K</div> : <div className="white-key" onClick={playC5}>K</div>}
     </div> : null}
-    {compareCmajScales(arrNotesCmaj, scale) && pianoType === 0  ? <><h2>Good Job</h2><button onClick={handleNewScale}>Click for a new Scale</button></> : pianoType === 0 ? <h3>Play all 8 correct notes in the C major scale!</h3>: null}
-    {scale.length === 8 & !compareCmajScales(arrNotesCmaj, scale) && pianoType === 0  ? <><h3>Good Try! Don't Worry!</h3><button onClick={handleRestart}>Try Again</button></>: null}
-
+    
         </div>
     )
 

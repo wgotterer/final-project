@@ -1,12 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function CalendarCard({privateClass}) {
-    return (
+
+    // const [dateString, setDateString] = useState([])
+
+    let d = new Date(privateClass.date).toLocaleString('en-US');
+    
+    
+    console.log(d)
+    
+
+    return  (
         <div>
-            <h2>{privateClass.date}</h2>
-            <h2>{privateClass.goal}</h2>
+            <h2>{d}</h2>
+            <h2>Goals: {privateClass.goal}</h2>
         </div>
-    )
+    ) 
 }
 
 export default CalendarCard

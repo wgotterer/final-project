@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect} from "react";
 import * as Tone from "tone";
+import StartScale from "./MajScales/StartScale.js";
 import Cmaj from "./MajScales/Cmaj.js";
 import Dmaj from "./MajScales/Dmaj.js";
 import Emaj from "./MajScales/Emaj.js";
@@ -8,6 +9,8 @@ import Fmaj from "./MajScales/Fmaj.js";
 import Amaj from "./MajScales/Amaj.js";
 import Gmaj from "./MajScales/Gmaj.js";
 import Bmaj from "./MajScales/Bmaj.js";
+import tinkywinky from "../data/tinky-winky.png"
+import piano_piano from "../data/piano_piano.png"
 import {
     playF3,
     playGb3,
@@ -45,7 +48,8 @@ function Piano({user, error}) {
     const [notePlayed, setNotePlayed] = useState()
     const [scale, setScale] = useState([])
     const [allScales, setAllScales] = useState()
-    const [pianoType, setPianoType] = useState(0)
+    const [pianoType, setPianoType] = useState(-1)
+    const [telePiano, setTelePiano] = useState(false)
 
     useEffect(() => {
         fetch("/scales")
@@ -65,26 +69,33 @@ function Piano({user, error}) {
         setNotePlayed()
     }
     
+    function handleTelePiano(){
+      setTelePiano(!telePiano)
+    }
 
+console.log(pianoType)
 
   return user ? (
 
      <div className="pianoPage">
-    <h1>Piano</h1>
+    <h3>Practice your scales by playing the correct notes on your keyboard</h3>
+    {telePiano ? <img onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
     
-    <Cmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <StartScale handleNewScale={handleNewScale} pianoType={pianoType} setPianoType={setPianoType}/>
 
-    <Dmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Cmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Emaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Dmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Fmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Emaj  telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Gmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Fmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Amaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Gmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Bmaj handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Amaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+
+    <Bmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
 
 
   </div>
