@@ -2,7 +2,7 @@ class PrivateClassesController < ApplicationController
   before_action :authorize
   
     def index
-        private_classes = PrivateClass.all
+        private_classes = PrivateClass.all.order('created_at DESC')
         render json: private_classes, status: :ok
       end
       
