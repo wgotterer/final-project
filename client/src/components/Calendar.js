@@ -9,7 +9,7 @@ import CalendarAdminCard from './CalendarAdminCard'
 
     
         useEffect(() => {
-            fetch("/private_classes")
+            fetch("/api/private_classes")
             .then(resp => resp.json())
             .then(allPrivateClasses => setPrivateClasses(allPrivateClasses))
         }, [])

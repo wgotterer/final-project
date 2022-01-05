@@ -31,7 +31,7 @@ function Login({setUser, setLoggedInUser}) {
 
     function handleLogin(event) {
         event.preventDefault();
-        fetch('/login', { 
+        fetch('/api/login', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ function Login({setUser, setLoggedInUser}) {
 
     function handleSignup(event) {
         event.preventDefault();
-        fetch('/users', {
+        fetch('/api/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

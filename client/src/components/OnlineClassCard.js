@@ -30,7 +30,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
             
             alert("You have already purchased this!")
         }else{
-            fetch("/user_online_classes", {
+            fetch("/api/user_online_classes", {
                 method: "POST", 
                 headers: {
                    "Content-Type": "application/json"
@@ -72,7 +72,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
     console.log(classToDisplay)
 
     function handleDeleteClass(){
-        fetch(`/online_classes/${oneOnlineClass.id}`, {
+        fetch(`/api/online_classes/${oneOnlineClass.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"

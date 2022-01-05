@@ -12,7 +12,7 @@ import calendar from "../data/calendar.png"
     let navigate = useNavigate();
 
     function handleLogOut() {
-        fetch("/logout", {
+        fetch("/api/logout", {
             method: "DELETE"
         })
         .then(() => {

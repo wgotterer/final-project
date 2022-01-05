@@ -26,7 +26,7 @@ import {useNavigate} from "react-router-dom";
 
     function handleSubmitPrivate(e){
         e.preventDefault()
-        fetch("/private_classes", {
+        fetch("/api/private_classes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

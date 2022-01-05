@@ -16,7 +16,7 @@ function OnlineClass({user, error, setUser}) {
 
 
     useEffect(() => {
-            fetch("/online_classes")
+            fetch("/api/online_classes")
             .then(resp => resp.json())
             .then(onlineClasses => {
                 setAllOnlineClasses(onlineClasses)

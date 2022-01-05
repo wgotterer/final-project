@@ -10,7 +10,7 @@ import React, {useState} from 'react'
 
      function handleSubmitEdit(e){
         e.preventDefault()
-         fetch(`/online_classes/${dataEditForm.id}`, {
+         fetch(`/api/online_classes/${dataEditForm.id}`, {
              method: "PATCH",
              headers: {
                 "Content-Type": "application/json"

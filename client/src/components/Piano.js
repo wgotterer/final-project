@@ -61,7 +61,7 @@ function Piano({user, error}) {
     const [minScale, setMinScale] = useState(false)
 
     useEffect(() => {
-        fetch("/scales")
+        fetch("/api/scales")
         .then(resp => resp.json())
         .then(allScales => setAllScales(allScales))
     }, [])
@@ -101,6 +101,8 @@ function Piano({user, error}) {
 
     function handleNewGame(){
       setPianoType(-1)
+      setMajScale(false)
+      setMinScale(false)
    }
 
 console.log(pianoType)

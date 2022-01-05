@@ -1,4 +1,4 @@
-class UserOnlineClassesController < ApplicationController
+class Api::UserOnlineClassesController < ApplicationController
     before_action :authorize
 
     def index

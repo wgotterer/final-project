@@ -1,4 +1,4 @@
-class ScalesController < ApplicationController
+class Api::ScalesController < ApplicationController
 
   def index
     scales = Scale.all
