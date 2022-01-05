@@ -99,6 +99,10 @@ function Piano({user, error}) {
       setTelePiano(!telePiano)
     }
 
+    function handleNewGame(){
+      setPianoType(-1)
+   }
+
 console.log(pianoType)
 
   return user ? (
@@ -125,8 +129,11 @@ console.log(pianoType)
     <Amaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
     <Bmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
+
+    {pianoType > -1 ? <button className="new_scale_button" onClick={handleNewGame}>Quit</button> : null }
     </>
     : null}
+
 
 
 {minScale ?
@@ -146,6 +153,9 @@ console.log(pianoType)
     <Amin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
     <Bmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
+
+    {pianoType > -1 ? <button className="new_scale_button" onClick={handleNewGame}>Quit</button> : null }
+
     </>
     : null}
 

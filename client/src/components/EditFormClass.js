@@ -44,6 +44,8 @@ import React, {useState} from 'react'
      console.log(dataEditForm)
 
     return oneOnlineClass && dataEditForm ? (
+        <div className="popup">
+        <div className="popup-inner">
         <div>
               <form className="form_edit" onSubmit={handleSubmitEdit}> 
                 <label> Name: </label>
@@ -91,6 +93,8 @@ import React, {useState} from 'react'
                 />
                 </label>
            </form>
+        </div>
+        </div>
         </div>
     ) : null
 }
