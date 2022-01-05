@@ -131,7 +131,7 @@ console.log(pianoType)
 
 {minScale ?
     <>
-        {telePiano ? <img onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
+        {telePiano ? <img className="tele-button" onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img className="tele-button" onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
 
     <Cmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 

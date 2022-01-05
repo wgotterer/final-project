@@ -113,7 +113,7 @@ import {useNavigate} from "react-router-dom";
                         <label> Valid Through: </label>
                         <label>
                         <input 
-                            type='date'
+                            type='month'
                             name='valid'
                             value={classFormData.valid}
                             onChange={handleClassChange}

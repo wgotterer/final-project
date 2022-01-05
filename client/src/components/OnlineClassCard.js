@@ -44,7 +44,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
             .then((newOnlineClass) => {
                 setNewOnlineClass(newOnlineClass["online_class"])
                 setUser((userData) => ({...userData, online_classes: [...userData["online_classes"], newOnlineClass["online_class"]]}))
-
+                alert("Thank you for your purchase")
                
             })
         }
@@ -54,7 +54,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
             name: '',
             cvc: ''
         })  
-        alert("Thank you for your purchase")
+        
         // props.setUser((userData)=> ({...userData, private_classes: [...userData["private_classes"], newPrivateClass]}))
 
         navigate("/purchased-classes")
@@ -126,8 +126,9 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
            : null} 
            
            {showBuyForm ? 
-
-
+            
+    <div className="popup">
+        <div className="popup-inner">
            <form className="buy_form" onSubmit={handleSubmitPurchase}> 
                 <label> Credit Card Number: </label>
                 <label>
@@ -152,7 +153,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
                 <label> Valid Through: </label>
                 <label>
                 <input 
-                    type='date'
+                    type='month'
                     name='valid'
                     value={formData.valid}
                     onChange={handlePurchaseFormChange}
@@ -172,7 +173,11 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
                     type='submit'
                 />
                 </label>
-           </form> :
+           </form> 
+           <button className="buy_button" onClick={handleShowForm}> {showBuyForm ? "Close" : "BUY"}</button> 
+
+           </div>
+           </div>:
 
         //    <YoutubeEmbed embedId={oneOnlineClass.video} /> }
         null }

@@ -60,16 +60,16 @@ UserTheoryGame.create(user_id:bugs.id, theory_game_id:game2.id)
 
 
 
-PrivateClass.create(goal:"Practice my scales", date:"20211225090000", user_id:donald.id)
-PrivateClass.create(goal:"Learn a new song", date:"20211225090000", user_id:bugs.id)
-PrivateClass.create(goal:"Not get nervous and cry", date:"20211225090000", user_id:mickey.id)
-PrivateClass.create(goal:"Impress Daisy Duck", date:"20211225090000", user_id:donald.id)
+PrivateClass.create(goal:"Practice my scales", date:"20220109190000", user_id:donald.id)
+PrivateClass.create(goal:"Learn a new song", date:"20220123183000", user_id:bugs.id)
+PrivateClass.create(goal:"Not get nervous and cry", date:"20220215230000", user_id:mickey.id)
+PrivateClass.create(goal:"Impress Daisy Duck", date:"20220113130000", user_id:donald.id)
 
 onlineClass1 = OnlineClass.create(name:"(Untitled) How Does it Feel - D'Angelo", description:"chord progression", price:"1.99", difficulty:"easy", video:"A1ovitsJ2Aw", available: true, image: "https://media.npr.org/assets/img/2020/01/23/d-angelo03_sq-0e9e25c04f6964ca2c18aacc08aefb41150a8210-s1100-c50.jpg"  )
 onlineClass2 = OnlineClass.create(name:"Roses intro - Outkast", description:"Learn the intro lick for Roses!", price:"1.99", difficulty:"intermediate", video:"zYw9XNbSLxc", available: true, image: "https://img.discogs.com/yqdOk818C1WxJji5oYFoDXkRaLU=/fit-in/600x522/filters:strip_icc():format(webp):mode_rgb():quality(90)/discogs-images/R-2444066-1455470393-7949.jpeg.jpg" )
 onlineClass3 = OnlineClass.create(name:"Gerogia on My Mind - Blues arrangement ", description:"note for note tutorial", price:"3.99", difficulty:"advanced", video:"CbZVv79JK4Q", available: true, image: "https://ih1.redbubble.net/image.849706282.1478/st,small,507x507-pad,600x600,f8f8f8.u6.jpg"  )
 onlineClass4 = OnlineClass.create(name:"Earned It - The Weekend", description:"note for note tutorial", price:"2.99", difficulty:"intermediate", video:"8nXXMPyZNe0", available: true, image: "https://upload.wikimedia.org/wikipedia/en/3/38/The_Weeknd_-_Earned_It.png"  )
-onlineClass5 = OnlineClass.create(name:"P.I.M.P - 50 Cent ", description:"note for note tutorial", price:"0.99", difficulty:"easy", video:"llLyqwbTmvs", available: true, image: "https://i.ytimg.com/vi/N3xU63cBj0U/maxresdefault.jpg"  )
+onlineClass5 = OnlineClass.create(name:"P.I.M.P - 50 Cent ", description:"note for note tutorial", price:"0.99", difficulty:"easy", video:"llLyqwbTmvs", available: true, image: "https://upload.wikimedia.org/wikipedia/en/9/9d/Get_Rich_Or_Die_Tryin%27.JPG"  )
 onlineClass6 = OnlineClass.create(name:"Moon River", description:"note for note tutorial", price:"1.99", difficulty:"intermediate", video:"Nmyce4WTNKw", available: true, image: "https://images-na.ssl-images-amazon.com/images/I/916ajka4ALL.jpg"  )
 
 UserOnlineClass.create(user_id: donald.id, online_class_id: onlineClass1.id)
