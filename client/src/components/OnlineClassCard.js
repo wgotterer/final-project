@@ -104,13 +104,20 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
         setShowEditForm(!showEditForm)
     }
 
+    const priceFloat = oneOnlineClass.price
+
+    // Can get a price with a 0 in the tens place to show
+    function priceWithZero(x) {
+        return Number.parseFloat(x).toFixed(2);
+      }
+
     // Doesnt display classes in browser on refresh but doesnt error out. I think it's something to do with not being able to read if an online class is availble.
 
     return oneOnlineClass && user && oneOnlineClass.available && oneOnlineClass.available === true ? (
         <div className="online_class">
             <h3>{oneOnlineClass.name}</h3>
            <img width="200px" heigh="200px" src={oneOnlineClass.image} />
-            <h5>{oneOnlineClass.price}</h5>
+            <h5>{priceWithZero(priceFloat)}</h5>
             <h5>{oneOnlineClass.difficulty}</h5>
             <h4>{oneOnlineClass.description}</h4>
 

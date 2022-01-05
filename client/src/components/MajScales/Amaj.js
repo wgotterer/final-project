@@ -1,9 +1,5 @@
 import React from 'react'
 import {
-    playF3,
-    playGb3,
-    playG3,
-    playAb3,
     playA3, 
     playBb3,
     playB3,
@@ -18,18 +14,15 @@ import {
     playAb4,
     playA4,
     playBb4,
-    playB4,
-    playC5,
-    playDb5,
-    playD5,
-    playEb5,
-    playE5,
-    playF5,
-    playGb5
+    playB4
   } from "../Tones.js";
 
-  function Amaj({telePiano, handleNewScale, handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType, setPianoType}) {
+  function Amaj({telePiano, handleNewScale, handleRestart, notePlayed, setNotePlayed, scale, setScale, allScales, pianoType}) {
 
+
+    //  function checks to see which key stroke is being pressed 
+    // and only allows the length of scale to be 8 notes. 
+    // Set's the notes to state to be compared with the back end keystrokes and see if they match
     function playAmajNote(event) {
         
       if (event.keyCode === 65 && scale.length <= 7) {       
@@ -98,8 +91,16 @@ import {
           setScale([...scale, 75])
         }
       }
+
+      // checks to see if allScales exist due to the asyn nature of react
+      // then iterates into the string of notes and makes them into an array and then an int
       let arrNotesAmaj =  allScales && allScales[5] ? allScales[5]["notes"].split(', ').map((note)=>  parseInt(note)) : null
 
+      // takes the variable containg the key stroke array
+      // and the scale being set to state by users keystrokes
+      // Once the user plays the length of the scale 
+      // the every method returns true if each key stroke iteration
+      // is equal to each user's scale's iteration at the same index
       function compareAmajScales(arrNotesAmaj, scale){
         if (scale.length === 8){ 
           return arrNotesAmaj.every((note, index) => {
@@ -107,14 +108,21 @@ import {
           })
         }
     }
-console.log(arrNotesAmaj)
-console.log(scale)
 
-// !!!!!!!!!!! Change pianotype to 5 when create the G major scale
     return (
         <div>
-          {compareAmajScales(arrNotesAmaj, scale) && pianoType === 5  ? <><h2>Good Job</h2><button  className="new_scale_button" onClick={handleNewScale}>Click for a new Scale</button></> : pianoType === 5 ? <h3>Play all 8 correct notes in the A major scale!</h3>: null}
-        {scale.length === 8 & !compareAmajScales(arrNotesAmaj, scale) && pianoType === 5  ? <><h3>Good Try! Don't Worry!</h3><button className="new_scale_button" onClick={handleRestart}>Try Again</button></>: null}
+          {compareAmajScales(arrNotesAmaj, scale) && pianoType === 5  ? 
+          <>
+          <h2>Good Job</h2>
+          <button  className="new_scale_button" onClick={handleNewScale}>Click for a new Scale</button>
+          </> 
+          : pianoType === 5 ? <h3>Play all 8 correct notes in the A major scale!</h3>: null}
+
+        {scale.length === 8 & !compareAmajScales(arrNotesAmaj, scale) && pianoType === 5  ? 
+        <>
+        <h3>Good Try! Don't Worry!</h3>
+        <button className="new_scale_button" onClick={handleRestart}>Try Again</button>
+        </>: null}
 
           {pianoType === 5 ?  <div className="piano" onKeyDown={playAmajNote} tabIndex={1}>
        <div><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>

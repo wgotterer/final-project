@@ -70,7 +70,8 @@ function OnlineClass({user, error, setUser}) {
         <div>
             <h3>Purchase premium follow along classes below</h3>
             <h3>Or</h3>
-            <h3>Sign up for a private class here</h3>
+            <h3>Sign up for a 1hr private class here</h3>
+            <h3>Only $30 for your first class!</h3>
             <button className="sign_up_button" onClick={handleShowPopUp}>Sign Up</button>
             <Popup user={user} setUser={setUser} trigger={showPopUp} setShowPopUp={setShowPopUp}/>
             <div className="search_container">
