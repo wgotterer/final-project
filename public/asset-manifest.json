@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2f635d4b.chunk.css",
+    "main.js": "/static/js/main.522f2c56.chunk.js",
+    "main.js.map": "/static/js/main.522f2c56.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9e7a0e1f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9e7a0e1f.js.map",
+    "static/js/2.9ff2f8cd.chunk.js": "/static/js/2.9ff2f8cd.chunk.js",
+    "static/js/2.9ff2f8cd.chunk.js.map": "/static/js/2.9ff2f8cd.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.2f635d4b.chunk.css.map": "/static/css/main.2f635d4b.chunk.css.map",
+    "static/js/2.9ff2f8cd.chunk.js.LICENSE.txt": "/static/js/2.9ff2f8cd.chunk.js.LICENSE.txt",
+    "static/media/calendar.1be09e8e.png": "/static/media/calendar.1be09e8e.png",
+    "static/media/home_piano.a9dcb1ca.png": "/static/media/home_piano.a9dcb1ca.png",
+    "static/media/index.css": "/static/media/telepiano.5bc7a3de.jpeg",
+    "static/media/piano_piano.df7d5baa.png": "/static/media/piano_piano.df7d5baa.png",
+    "static/media/purchased_piano.5a093b74.png": "/static/media/purchased_piano.5a093b74.png",
+    "static/media/snoopy.fed2267c.png": "/static/media/snoopy.fed2267c.png",
+    "static/media/teacher_piano.d29e0d8b.png": "/static/media/teacher_piano.d29e0d8b.png",
+    "static/media/tinky-winky.3b0c81f9.png": "/static/media/tinky-winky.3b0c81f9.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9e7a0e1f.js",
+    "static/js/2.9ff2f8cd.chunk.js",
+    "static/css/main.2f635d4b.chunk.css",
+    "static/js/main.522f2c56.chunk.js"
+  ]
+}
