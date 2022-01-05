@@ -18,34 +18,7 @@ import Amin from "./MinScales/Amin.js";
 import Bmin from "./MinScales/Bmin.js";
 import tinkywinky from "../data/tinky-winky.png"
 import piano_piano from "../data/piano_piano.png"
-import {
-    playF3,
-    playGb3,
-    playG3,
-    playAb3,
-    playA3, 
-    playBb3,
-    playB3,
-    playC4,
-    playDb4,
-    playD4,
-    playEb4,
-    playE4,
-    playF4,
-    playGb4,
-    playG4,
-    playAb4,
-    playA4,
-    playBb4,
-    playB4,
-    playC5,
-    playDb5,
-    playD5,
-    playEb5,
-    playE5,
-    playF5,
-    playGb5
-  } from "./Tones.js";
+
   
 
 // CREATE NEW CHILD COMPONENTS FOR EACH SCALE

@@ -115,19 +115,19 @@ console.log(scale)
        <div className="start_container"><button className="start_piano">CLICK TO<br />POWER ON<br /> PIANO</button> </div>
        {telePiano ? <div className="white-key-tele"></div>  : <div className="white-key"></div>}
         {telePiano ? <div className="black-key-tele"></div>  : <div className="black-key"></div>}
-        {notePlayed === 65 ?<div className="red-white-key" onClick={playG3}>A</div> : telePiano ? <div className="white-key-tele" onClick={playG3}>A</div> : <div className="white-key" onClick={playG3}>A</div> }
-        {notePlayed === 87 ? <div className="red-black-key" onClick={playAb3}>W</div> : telePiano ? <div className="black-key-tele" onClick={playAb3}>W</div> : <div className="black-key" onClick={playAb3}>W</div> }
-        {notePlayed === 83 ?<div className="red-white-key" onClick={playA3}>S</div> : telePiano ? <div className="white-key-tele" onClick={playA3}>S</div> : <div className="white-key" onClick={playA3}>S</div> }
-        {notePlayed === 69 ? <div className="red-black-key" onClick={playBb3}>E</div> : telePiano ? <div className="black-key-tele" onClick={playBb3}>E</div> : <div className="black-key" onClick={playBb3}>E</div>  }
-        {notePlayed === 68 ?<div className="red-white-key" onClick={playB3}>D</div> : telePiano ? <div className="white-key-tele" onClick={playB3}>D</div> : <div className="white-key" onClick={playB3}>D</div> }
-        {notePlayed === 70 ? <div  className="red-white-key" onClick={playC4}>F</div> : telePiano ? <div  className="white-key-tele" onClick={playC4}>F</div> : <div  className="white-key" onClick={playC4}>F</div>  } 
-        {notePlayed === 84 ? <div className="red-black-key" onClick={playDb4}>T</div> : telePiano ? <div className="black-key-tele" onClick={playDb4}>T</div> : <div className="black-key" onClick={playDb4}>T</div> }
-        {notePlayed === 72 ? <div className="red-white-key" onClick={playD4}>H</div> : telePiano ? <div className="white-key-tele" onClick={playD4}>H</div> : <div className="white-key" onClick={playD4}>H</div>  }
-        {notePlayed === 85 ? <div className="red-black-key" onClick={playEb4}>U</div> : telePiano ?<div className="black-key-tele" onClick={playEb4}>U</div> : <div className="black-key" onClick={playEb4}>U</div> }
-        {notePlayed === 74 ? <div className="red-white-key" onClick={playE4}>J</div> : telePiano ?  <div className="white-key-tele" onClick={playE4}>J</div> : <div className="white-key" onClick={playE4}>J</div> }
-        {notePlayed === 75 ? <div className="red-white-key" onClick={playF4}>K</div> : telePiano ? <div className="white-key-tele" onClick={playF4}>K</div> : <div className="white-key" onClick={playF4}>K</div>  }
-        {notePlayed === 79 ? <div className="red-black-key" onClick={playGb4}>O</div> : telePiano ? <div className="black-key-tele" onClick={playGb4}>O</div> : <div className="black-key" onClick={playGb4}>O</div> }
-        {notePlayed === 76 ? <div className="red-white-key" onClick={playG4}>L</div> : telePiano ? <div className="white-key-tele" onClick={playG4}>L</div> : <div className="white-key" onClick={playG4}>L</div>  }
+        {notePlayed === 65 ?<div className="red-white-key" onKeyDown={playG3}>A</div> : telePiano ? <div className="white-key-tele" onKeyDown={playG3}>A</div> : <div className="white-key" onKeyDown={playG3}>A</div> }
+        {notePlayed === 87 ? <div className="red-black-key" onKeyDown={playAb3}>W</div> : telePiano ? <div className="black-key-tele" onKeyDown={playAb3}>W</div> : <div className="black-key" onKeyDown={playAb3}>W</div> }
+        {notePlayed === 83 ?<div className="red-white-key" onKeyDown={playA3}>S</div> : telePiano ? <div className="white-key-tele" onKeyDown={playA3}>S</div> : <div className="white-key" onKeyDown={playA3}>S</div> }
+        {notePlayed === 69 ? <div className="red-black-key" onKeyDown={playBb3}>E</div> : telePiano ? <div className="black-key-tele" onKeyDown={playBb3}>E</div> : <div className="black-key" onKeyDown={playBb3}>E</div>  }
+        {notePlayed === 68 ?<div className="red-white-key" onKeyDown={playB3}>D</div> : telePiano ? <div className="white-key-tele" onKeyDown={playB3}>D</div> : <div className="white-key" onKeyDown={playB3}>D</div> }
+        {notePlayed === 70 ? <div  className="red-white-key" onKeyDown={playC4}>F</div> : telePiano ? <div  className="white-key-tele" onKeyDown={playC4}>F</div> : <div  className="white-key" onKeyDown={playC4}>F</div>  } 
+        {notePlayed === 84 ? <div className="red-black-key" onKeyDown={playDb4}>T</div> : telePiano ? <div className="black-key-tele" onKeyDown={playDb4}>T</div> : <div className="black-key" onKeyDown={playDb4}>T</div> }
+        {notePlayed === 72 ? <div className="red-white-key" onKeyDown={playD4}>H</div> : telePiano ? <div className="white-key-tele" onKeyDown={playD4}>H</div> : <div className="white-key" onKeyDown={playD4}>H</div>  }
+        {notePlayed === 85 ? <div className="red-black-key" onKeyDown={playEb4}>U</div> : telePiano ?<div className="black-key-tele" onKeyDown={playEb4}>U</div> : <div className="black-key" onKeyDown={playEb4}>U</div> }
+        {notePlayed === 74 ? <div className="red-white-key" onKeyDown={playE4}>J</div> : telePiano ?  <div className="white-key-tele" onKeyDown={playE4}>J</div> : <div className="white-key" onKeyDown={playE4}>J</div> }
+        {notePlayed === 75 ? <div className="red-white-key" onKeyDown={playF4}>K</div> : telePiano ? <div className="white-key-tele" onKeyDown={playF4}>K</div> : <div className="white-key" onKeyDown={playF4}>K</div>  }
+        {notePlayed === 79 ? <div className="red-black-key" onKeyDown={playGb4}>O</div> : telePiano ? <div className="black-key-tele" onKeyDown={playGb4}>O</div> : <div className="black-key" onKeyDown={playGb4}>O</div> }
+        {notePlayed === 76 ? <div className="red-white-key" onKeyDown={playG4}>L</div> : telePiano ? <div className="white-key-tele" onKeyDown={playG4}>L</div> : <div className="white-key" onKeyDown={playG4}>L</div>  }
         {telePiano ? <div className="black-key-tele"></div>  : <div className="black-key"></div>}
         {telePiano ? <div className="white-key-tele"></div>  : <div className="white-key"></div>}
     {telePiano ? <div className="black-key-tele"></div>  : <div className="black-key"></div>}
