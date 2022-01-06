@@ -24,6 +24,7 @@ import {useNavigate} from "react-router-dom";
         props.setShowPopUp(false)
     }
 
+    // post request on submission that creates a class with date, goal, id
     function handleSubmitPrivate(e){
         e.preventDefault()
         fetch("/api/private_classes", {
@@ -40,12 +41,12 @@ import {useNavigate} from "react-router-dom";
         .then(resp => resp.json())
         .then((newPrivateClass) => {
             setNewPrivateClass(newPrivateClass)
-            // SOMETHING LIKE THIS TO RESET STATE AND REFRESH TO HAVE THE NEW CLASS SHOW UP?
-            // props.setUser(props.user, [props.user["online_classes"], newPrivateClass] )
+            // to re-render the page to see the new private class
+            // set state to the current user data with spread operator
+            // update the private classes array with the current private classes plus the new one
             props.setUser((userData)=> ({...userData, private_classes: [...userData["private_classes"], newPrivateClass]}))
 
         })
-
         setClassFormData({
             credit: '',
             name: '',
@@ -54,20 +55,14 @@ import {useNavigate} from "react-router-dom";
             date: '',
             goal: ''
         })
-        // props.setUser(props.user, [props.user["online_classes"]] )
         navigate("/calendar")
 
     }
-    console.log(newPrivateClass)
-    console.log(props.user, props.user["online_classes"])
-    console.log(props.user)
-
 
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
                 <button className="close_button" onClick={handleClosePopup}>close</button>
-                    {/* {props.children} */}
                     <h2>Private Class Sign Up</h2>
                     <form onSubmit={handleSubmitPrivate} className="private_class_form_container">
                     <label>Class Date and Time</label>

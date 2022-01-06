@@ -39,13 +39,15 @@ function Piano({user, error}) {
         .then(allScales => setAllScales(allScales))
     }, [])
 
+    // onClick function that adds one to the pianoType. Each scale is rendered based on their pianotype
+    // reset the state of the scale and note the user played
     function handleNewScale(){
         setPianoType(pianoType + 1)
         setScale([])
         setNotePlayed()
         
     }
-
+    // button to show the first scale
     function handleMajScale(){
       setMajScale(!majScale)
       handleNewScale()
@@ -56,12 +58,6 @@ function Piano({user, error}) {
       handleNewScale()
     }
 
-  //   function handleNewMinScale(){
-  //     setPianoType(pianoType + 1)
-  //     setScale([])
-  //     setNotePlayed()
-      
-  // }
 
     function handleRestart(){
         setScale([])
@@ -71,39 +67,45 @@ function Piano({user, error}) {
     function handleTelePiano(){
       setTelePiano(!telePiano)
     }
-
+    // sets state to be on the piano landing page
     function handleNewGame(){
       setPianoType(-1)
       setMajScale(false)
       setMinScale(false)
    }
 
-console.log(pianoType)
-
   return user ? (
 
-     <div className="pianoPage">
+    <div className="pianoPage">
     <h3>Practice your scales by playing the correct notes on your keyboard</h3>
     
     <StartScale handleMajScale={handleMajScale} handleMinScale={handleMinScale} handleNewScale={handleNewScale} pianoType={pianoType} setPianoType={setPianoType}/>
 
     {majScale ?
     <>
-        {telePiano ? <img className="tele-button" onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img className="tele-button" onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
+        {telePiano ? <img className="tele-button" onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> 
+        : <img className="tele-button" onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
 
-    <Cmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Cmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Dmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Dmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Emaj  telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Emaj  telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Fmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Fmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Gmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Gmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Amaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Amaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Bmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
+    <Bmaj telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
 
     {pianoType > -1 ? <button className="new_scale_button" onClick={handleNewGame}>Quit</button> : null }
     </>
@@ -115,19 +117,26 @@ console.log(pianoType)
     <>
         {telePiano ? <img className="tele-button" onClick={handleTelePiano}  src={piano_piano}  width="100px" height="100px" /> : <img className="tele-button" onClick={handleTelePiano}  src={tinkywinky}  width="100px" height="100px" />}
 
-    <Cmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Cmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Dmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Dmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Emin  telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Emin  telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Fmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Fmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Gmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Gmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Amin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
+    <Amin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} />
 
-    <Bmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
+    <Bmin telePiano={telePiano} handleNewScale={handleNewScale} handleRestart={handleRestart} 
+    notePlayed={notePlayed} setNotePlayed={setNotePlayed} scale={scale} setScale={setScale} allScales={allScales} pianoType={pianoType} setPianoType={setPianoType} />
 
     {pianoType > -1 ? <button className="new_scale_button" onClick={handleNewGame}>Quit</button> : null }
 
