@@ -60,22 +60,13 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
             name: '',
             cvc: ''
         })  
-        
-        // props.setUser((userData)=> ({...userData, private_classes: [...userData["private_classes"], newPrivateClass]}))
-
         navigate("/purchased-classes")
-
-        //to reset state so the users purchased songs appear do i need to setUser state to user plus the newly purhcased online class?
     }
    
 
     function handleShowForm(){
         setShowBuyForm(!showBuyForm) 
     }
-
-    
-    console.log(user)
-    console.log(classToDisplay)
 
     function handleDeleteClass(){
         fetch(`/api/online_classes/${oneOnlineClass.id}`, {
@@ -84,13 +75,18 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                // instead of making a delete request, a patch is made
+                // I didn't want to delete an online class that somebody bought
+                // instead just wanted it to be removed from being purchasable
                 available: false
             })
         })
         .then((resp)=> resp.json())
         .then((data)=> {
-            console.log(data)
-            
+            // maps over a shallow copy of all classes
+            // checks to see if one of the classes has the same id as what was just patched
+            // if so we are adding that to the new array with its newly updated false availibilty
+            // the array is then filtered to only return the classes that have availibity as true
             setClassToDisplay(()=>{
                 const allClasses = [...classToDisplay]
                 return allClasses.map((aClass)=> {
@@ -117,8 +113,7 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
         return Number.parseFloat(x).toFixed(2);
       }
 
-    // Doesnt display classes in browser on refresh but doesnt error out. I think it's something to do with not being able to read if an online class is availble.
-
+    //   Checks to see if the online classes availbility is set to true before rendering it
     return oneOnlineClass && user && oneOnlineClass.available && oneOnlineClass.available === true ? (
         <div className="online_class">
             <h3>{oneOnlineClass.name}</h3>
@@ -188,15 +183,9 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
                 </label>
            </form> 
            <button className="buy_button" onClick={handleShowForm}> {showBuyForm ? "Close" : "BUY"}</button> 
-
-           </div>
-           </div>:
-
-        //    <YoutubeEmbed embedId={oneOnlineClass.video} /> }
-        null }
-
-           <button className="buy_button" onClick={handleShowForm}> {showBuyForm ? "Close" : "BUY"}</button> 
-            
+        </div>
+    </div>:null}
+           <button className="buy_button" onClick={handleShowForm}> {showBuyForm ? "Close" : "BUY"}</button>    
         </div>
     ) : null
 }
