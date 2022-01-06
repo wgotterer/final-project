@@ -2,8 +2,6 @@ import React from 'react'
 import PurchasedCards from './PurchasedCards'
 
  function Purchased({user, error}) {
-
-    // Newly purchased song isnt there. need to reset state. of User?!!!!!!!!!!
   
     return user ? (
        <div>

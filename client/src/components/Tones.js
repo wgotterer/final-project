@@ -2,7 +2,8 @@ import React from 'react'
 import * as Tone from "tone";
   
 
-
+//  the .toDestination method is what allows the sound to go to the speakers
+// the triggerattackRelease has two arguements, one is the note and the second is the duration
   export function playF3() {
     const synth = new Tone.Synth().toDestination();
     synth.triggerAttackRelease("F3", "8n");
