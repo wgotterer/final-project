@@ -247,7 +247,7 @@ padding-bottom: 20px;
     opacity: .5;
   }  
 
-.circles li{
+.piano_note_animation li{
     position: absolute;
     display: block;
     list-style: none;
@@ -263,7 +263,7 @@ padding-bottom: 20px;
 } 
 
 
-.circles li:nth-child(1){
+.piano_note_animation li:nth-child(1){
   right: 25%;
   width: 80px;
   height: 80px;
@@ -274,7 +274,7 @@ padding-bottom: 20px;
 }
 
 
-.circles li:nth-child(2){
+.piano_note_animation li:nth-child(2){
   right: 10%;
   width: 20px;
   height: 20px;
@@ -286,7 +286,7 @@ padding-bottom: 20px;
 }
 
 
- .circles li:nth-child(3){
+ .piano_note_animation li:nth-child(3){
   right: 40%;
   width: 60px;
   height: 60px;
@@ -297,7 +297,7 @@ padding-bottom: 20px;
   background-size:100% 100%;
 }
 
-.circles li:nth-child(4){
+.piano_note_animation li:nth-child(4){
   right: 10%;
   width: 20px;
   height: 20px;
@@ -307,7 +307,7 @@ padding-bottom: 20px;
   background-repeat: no-repeat;
   background-size:100% 100%;
 } 
-.circles li:nth-child(5){
+.piano_note_animation li:nth-child(5){
   right: 2%;
   width: 35px;
   height: 35px;
@@ -317,7 +317,7 @@ padding-bottom: 20px;
   background-repeat: no-repeat;
   background-size:100% 100%;
 } 
-.circles li:nth-child(6){
+.piano_note_animation li:nth-child(6){
   right: 42%;
   width: 25px;
   height: 25px;

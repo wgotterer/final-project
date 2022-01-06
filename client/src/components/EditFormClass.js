@@ -2,12 +2,16 @@ import React, {useState} from 'react'
 
  function EditFormClass({oneOnlineClass, setShowEditForm, classToDisplay, setClassToDisplay}) {
 
+    // create a form state to have a controlled form
      const [dataEditForm, setDataEditForm] = useState(oneOnlineClass)
 
+    //  onChange form function that makes a shallow copy of the class being edited
+    // then changes the value pertaining to the name of the input field
      function handleChangeEdit(e){
         setDataEditForm({...dataEditForm, [e.target.name] : e.target.value})
      }
 
+    //  submits the form and makes a patch request
      function handleSubmitEdit(e){
         e.preventDefault()
          fetch(`/api/online_classes/${dataEditForm.id}`, {
@@ -25,6 +29,8 @@ import React, {useState} from 'react'
          .then((resp)=> resp.json())
          .then((updatedClass)=>{
              
+            // allows state to reset and re-render the page 
+            // allowing us to see the changes made
             setClassToDisplay(()=>{
                 const allClasses = [...classToDisplay]
                 return allClasses.map((oneClass)=> {
@@ -41,8 +47,6 @@ import React, {useState} from 'react'
      }
     
 
-     console.log(dataEditForm)
-
     return oneOnlineClass && dataEditForm ? (
         <div className="popup">
         <div className="popup-inner">
@@ -53,6 +57,7 @@ import React, {useState} from 'react'
                 <input 
                     type='text'
                     name='name'
+                    // using what is currently in state to populate the input field
                     value={dataEditForm.name}
                     onChange={handleChangeEdit}
                     placeholder="hello"

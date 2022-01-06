@@ -11,26 +11,19 @@ function OnlineClass({user, error, setUser}) {
     const [classToDisplay, setClassToDisplay] = useState([{}]);
     const [category, setCategory] = useState()
    
-    
-
-
-
     useEffect(() => {
             fetch("/api/online_classes")
             .then(resp => resp.json())
             .then(onlineClasses => {
                 setAllOnlineClasses(onlineClasses)
                 setClassToDisplay(onlineClasses)
-             
+                 // the state, classToDisplay, is created becuase as we search the classes displayed will change
+                // when we backspace the search information we want to see all classes which is why
+                // we set two states container all the onlines classes as an inital value
             })
-       
-       
     }, [])
     
-    // console.log(error)
-
-    // console.log(allOnlineClasses)
-
+   
     function handleShowPopUp(){
         setShowPopUp(!showPopUp)
     }
@@ -43,8 +36,7 @@ function OnlineClass({user, error, setUser}) {
     function handleFilterSearch(value) {
         setClassToDisplay(allOnlineClasses.filter(filterclass => {
             return filterclass.name.toLowerCase().includes(value.toLowerCase());
-        }));
-        
+        }));  
     }
 
 

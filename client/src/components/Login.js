@@ -20,6 +20,8 @@ function Login({setUser, setLoggedInUser}) {
         confirm: ''
     });
 
+    // Onchange function that takes a copy of what is currently in state
+    // and changes the value of the key associated with the name in the input field
     function handleLoginChange(event) {
         setLoginFormData({...loginFormData, [event.target.name]: event.target.value});
     }
@@ -29,6 +31,7 @@ function Login({setUser, setLoggedInUser}) {
     }
 
 
+    // on submit, makes a post request and sets the user to session cookies
     function handleLogin(event) {
         event.preventDefault();
         fetch('/api/login', { 
@@ -42,7 +45,6 @@ function Login({setUser, setLoggedInUser}) {
             if (resp.ok){
                 resp.json()
                 .then(data => {
-                    console.log(data)
                     setUser(data);
                     setLoggedInUser(true);
                     setLoginFormData({
@@ -63,7 +65,7 @@ function Login({setUser, setLoggedInUser}) {
                 navigate("/login")
                 alert("Incorrect username or password")
             }
-            // How to use the error to display in alert instead of hardcode
+            // ??How to use the error to display in alert instead of hardcode
         }) 
     }
 

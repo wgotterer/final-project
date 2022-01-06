@@ -7,25 +7,16 @@ import CalendarAdminCard from './CalendarAdminCard'
     const [privateClasses, setPrivateClasses] = useState()
 
 
-    
+    // fetches and sets to state all private classes
         useEffect(() => {
             fetch("/api/private_classes")
             .then(resp => resp.json())
             .then(allPrivateClasses => setPrivateClasses(allPrivateClasses))
         }, [])
         
-    console.log(privateClasses)
-    console.log(user)
-
-    //  console.log(user["private_classes"]) 
-
-
-    //  return  user.admin !== "1" ? (
-    //     <div>
-    //         <h1>Upcoming Classes</h1>
-    //        { privateClasses.map((oneClass)=> <CalendarAdminCard oneClass={oneClass}/> )}
-    //     </div>
-    // ) : user["private_classes"] ? user["private_classes"].map((privateClass) => <CalendarCard privateClass={privateClass} key={privateClass.id}/> ) 
+   
+        // checks to see if user and priv class state do not exist
+        // if so renders html message
         if(!user || !privateClasses){
             return <h2>Page Not Available</h2> 
         }
@@ -33,8 +24,10 @@ import CalendarAdminCard from './CalendarAdminCard'
         <>
         <h1>Upcoming Classes</h1>
         <div className="calendar_grid_container">
-            
+
+            {/* If the user is not an admin then we want to render only the priv classes associated with specific user (non admins have their admin column set to "0")  */}
        {(user.admin !== "1") ? user["private_classes"].map((privateClass) => <CalendarCard privateClass={privateClass} key={privateClass.id}/> ) : 
+        // If user is admin then render all upcoming classes 
        privateClasses.map((oneClass)=> <CalendarAdminCard oneClass={oneClass}/> )  }
         </div>
         </>

@@ -9,7 +9,8 @@ import snoopy from "../data/snoopy.png"
         
         <div className="home_container" >
             
-            <ul className="circles">
+            {/* piano note animation */}
+            <ul className="piano_note_animation">
                     <li></li>
                     <li></li>
                     <li></li>

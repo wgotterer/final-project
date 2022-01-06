@@ -11,6 +11,7 @@ import calendar from "../data/calendar.png"
 
     let navigate = useNavigate();
 
+    // destroys the session cookies
     function handleLogOut() {
         fetch("/api/logout", {
             method: "DELETE"
@@ -25,6 +26,7 @@ import calendar from "../data/calendar.png"
     return (
         <div>
              <h2> Piano with William</h2>
+             {/* Link allows the an onClick that brings a user to desired path */}
             <Link to='/'><img height="40px" width="40px" src={home_piano} /></Link> {' '}
             <Link to='/piano'><img height="40px" width="40px" src={piano_piano} /></Link> {' '} 
             <Link to='/follow-along-classes'><img height="40px" width="40px" src={teacher_piano} /></Link> {' '} 

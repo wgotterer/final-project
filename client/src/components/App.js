@@ -17,6 +17,8 @@ function App() {
   const [error, setError] = useState()
 
 
+  // fetches the user info stored in sessions and then sets that user to state
+  // This fetch allows one to refresh the page and not be automatically logged out
   useEffect(() => {
     fetch('/api/me')
     .then(response => {
@@ -39,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <NavBar loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser} setUser={setUser}/>
+      {/* With new react router Routes wrap around Route */}
       <Routes>
       
       <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />

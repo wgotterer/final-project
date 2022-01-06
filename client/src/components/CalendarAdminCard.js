@@ -3,6 +3,7 @@ import React from 'react'
 
  function CalendarAdminCard({oneClass}) {
 
+    // makes the date formatted in a prettier way
     let d = new Date(oneClass.date).toLocaleString('en-US');
 
     return (
