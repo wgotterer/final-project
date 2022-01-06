@@ -28,11 +28,13 @@ function OnlineClass({user, error, setUser}) {
         setShowPopUp(!showPopUp)
     }
 
+    
     function handleSearch(e){
         setSearch(e.target.value)
         handleFilterSearch(e.target.value)
     }
 
+    // filters the classes displayed on the page that include the e.target.value in the handleSearch
     function handleFilterSearch(value) {
         setClassToDisplay(allOnlineClasses.filter(filterclass => {
             return filterclass.name.toLowerCase().includes(value.toLowerCase());
@@ -91,7 +93,9 @@ function OnlineClass({user, error, setUser}) {
             </div>
         <div className="online_grid_container">
 
-           {classToDisplay ? classToDisplay.map((oneOnlineClass)  => <OnlineClassCard setClassToDisplay={setClassToDisplay} classToDisplay={classToDisplay} oneOnlineClass={oneOnlineClass} setUser={setUser} user={user}/>) : "Loading"} 
+           {classToDisplay ? classToDisplay.map((oneOnlineClass)  => 
+           <OnlineClassCard setClassToDisplay={setClassToDisplay} classToDisplay={classToDisplay} oneOnlineClass={oneOnlineClass} setUser={setUser} user={user}/>)
+            : "Loading"} 
         </div>
         </div>
        

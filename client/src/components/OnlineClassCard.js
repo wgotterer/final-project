@@ -36,6 +36,8 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
+                    // instead of posting the users credit card info, the user id and class id are posted
+                    // this a join table in the backend and will allow us to get an online class associatied with a user
                     user_id: user.id,
                     online_class_id: oneOnlineClass.id
                 })
@@ -43,6 +45,10 @@ function OnlineClassCard({oneOnlineClass, classToDisplay, user, setUser, setClas
             .then((resp)=> resp.json())
             .then((newOnlineClass) => {
                 setNewOnlineClass(newOnlineClass["online_class"])
+                // to update the state, re-render, and see the purchased class.
+                // takes current user state data and iterates into the online classes array belonging to user
+                // makes a shallow copy of what is currently in the array
+                //  and then adds the value of newOnlineClass' online class array
                 setUser((userData) => ({...userData, online_classes: [...userData["online_classes"], newOnlineClass["online_class"]]}))
                 alert("Thank you for your purchase")
                
