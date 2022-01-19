@@ -10,6 +10,8 @@ I used a Rails back end because it follows convention over configuration making 
 
 Some challenges I faced were creating the virtual piano and thinking of a way to make a calendar. The virutal keyboard was difficult becuase I made custom keyboards for each scale. I didn't want to have one full sized keyboard and have the key strokes be all over the place and not simulating natural path playing a piano on a computer keyboard. Regarding the calendar, I am currently looking into methods that will allow me to visually show previous and past classes on a calendar. 
 
+Front end components are in the "client" folder --> https://github.com/wgotterer/piano-with-william/tree/main/client
+
 Demo the project here --> (Heroku apps go to sleep after not being used so it may take 30 seconds to load) --> https://piano-with-william.herokuapp.com/
 
 Video walkthrough here --> https://www.youtube.com/watch?v=lEkoSBJE8Cw
