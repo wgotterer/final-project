@@ -1,61 +1,72 @@
-import './App.css';
-import { useEffect, useState } from 'react';
-import {Route, Routes} from 'react-router-dom';
-import NavBar from './NavBar';
-import Piano from './Piano';
-import Home from './Home';
-import Login from './Login';
-import OnlineClass from './OnlineClass';
-import Purchased from './Purchased';
-import Calendar from './Calendar';
-
+import "./App.css";
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import NavBar from "./NavBar";
+import Piano from "./Piano";
+import Home from "./Home";
+import Login from "./Login";
+import OnlineClass from "./OnlineClass";
+import Purchased from "./Purchased";
+import Calendar from "./Calendar";
 
 function App() {
-
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(false);
-  const [error, setError] = useState()
-
+  const [error, setError] = useState();
 
   // fetches the user info stored in sessions and then sets that user to state
   // This fetch allows one to refresh the page and not be automatically logged out
   useEffect(() => {
-    fetch('/api/me')
-    .then(response => {
+    fetch("/api/me").then((response) => {
       if (response.ok) {
-        response.json()
-        .then(person => {
+        response.json().then((person) => {
           setUser(person);
-          setLoggedInUser(true)
+          setLoggedInUser(true);
         });
-      }else {
-        response.json()
-        .then(oneError => {
-          setError(oneError)
+      } else {
+        response.json().then((oneError) => {
+          setError(oneError);
         });
       }
     });
   }, []);
 
-
   return (
     <div className="App">
-      <NavBar loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser} setUser={setUser}/>
+      <NavBar
+        loggedInUser={loggedInUser}
+        setLoggedInUser={setLoggedInUser}
+        setUser={setUser}
+      />
       {/* With new react router Routes wrap around Route */}
       <Routes>
-      
-      <Route path='/login' element={<Login setUser={setUser} setLoggedInUser={setLoggedInUser}/>} />
-      <Route path='/' element={<Home  loggedInUser={loggedInUser} user={user} />}/>
-      
-      <Route path='/piano' element={<Piano user={user} error={error} />}/>
-      <Route path='/follow-along-classes' element={<OnlineClass setUser={setUser} error={error} user={user} />}/>
-      <Route path='/purchased-classes' element={<Purchased error={error} user={user} />}/>
-      <Route path='/calendar' element={<Calendar error={error} user={user} />}/>
-    
+        <Route
+          path="/login"
+          element={
+            <Login setUser={setUser} setLoggedInUser={setLoggedInUser} />
+          }
+        />
+        <Route
+          path="/"
+          element={<Home loggedInUser={loggedInUser} user={user} />}
+        />
+
+        <Route path="/piano" element={<Piano user={user} error={error} />} />
+        <Route
+          path="/follow-along-classes"
+          element={<OnlineClass setUser={setUser} error={error} user={user} />}
+        />
+        <Route
+          path="/purchased-classes"
+          element={<Purchased error={error} user={user} />}
+        />
+        <Route
+          path="/calendar"
+          element={<Calendar error={error} user={user} />}
+        />
       </Routes>
     </div>
-  ) 
-
+  );
 }
 
 export default App;

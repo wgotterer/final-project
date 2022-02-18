@@ -332,17 +332,8 @@ padding-bottom: 20px;
 
 
 @keyframes animate {
-
-  /* 0%{
-      transform: translateY(0) rotate(0deg);
-      opacity: 2;
-      border-radius: 0;
-  } */
-
   100%{
       transform: translateY(-1000px) rotate(100deg);
-      /* opacity: 6; */
-      /* border-radius: 100%; */
   }
 
 } 
